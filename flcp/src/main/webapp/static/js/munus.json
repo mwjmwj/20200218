@@ -1,0 +1,25 @@
+[
+  {
+    "menuName": "系统管理",
+    "subMenus": [
+      {
+        "menuName": "字典管理",
+        "menuKey": "dictionary",
+        "menuController": "dictionaryController",
+        "url": "page/backEndManager/system/dictionary/dictionary.html"
+      }
+    ]
+  },
+  {
+    "menuName": "业务管理",
+    "subMenus": [
+      {
+        "menuName": "开奖记录",
+        "menuKey": "lotteryRecord",
+        "menuController": "lotteryRecordController",
+        "url": "page/backEndManager/business/lotteryRecord/lotteryRecord.html"
+      }
+    ]
+  }
+]
+

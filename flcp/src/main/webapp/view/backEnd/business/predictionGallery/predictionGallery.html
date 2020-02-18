@@ -1,0 +1,150 @@
+<div ng-controller="predictionGalleryController">
+    <div id="predictionGalleryList">
+        <table id="predictionGalleryTable" lay-filter="predictionGalleryListFilter"></table>
+    </div>
+    <div id="predictionGalleryAddPage" ng-show="predictionGalleryAddPageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="predictionGallery.title" type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖期数</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="predictionGallery.lotteryPeriod" type="text" name="lotteryPeriod" required lay-verify="required" placeholder="请输入开奖期数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖时间</label>
+                    <div class="layui-input-inline" title="开奖时间">
+                        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+                            <input type="text" class="layui-input" id="predictionGalleryDateAdd" ng-model="predictionGallery.createdTime" name="createdTime">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容类型</label>
+                    <div class="layui-input-block">
+                        <select lay-verify="required" ng-model="predictionGallery.type" ng-options="contentType.key as contentType.value for contentType in contentTypes" ng-change="config.predictionGalleryAddChnage(predictionGallery.type)"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12" ng-show="contentShowFlag">
+                <div class="layui-form-item layui-form-text" >
+                    <label class="layui-form-label">文本内容</label>
+                    <div class="layui-input-block">
+                        <textarea ng-model="predictionGallery.content" name="content" placeholder="请输入内容" class="layui-textarea" style="width: 500px;height: 391px;resize: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6" ng-show="picShowFlag">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">选择图片</label><button type="button" class="layui-btn" id="uploadPicaAdd"><i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                </div>
+            </div>
+            <div class="layui-col-md6" ng-show="picShowFlag">
+                <div class="layui-form-item">
+                    <button type="button" 	class="layui-btn layui-btn-primary" ng-click="config.lookPic(predictionGallery.fileRecordUrl)">查看预测图</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.predictionGalleryAdd()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="predictionGalleryUpdatePage" ng-show="predictionGalleryUpdatePageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="predictionGallery.title" type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖期数</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="predictionGallery.lotteryPeriod" type="text" name="lotteryPeriod" required lay-verify="required" placeholder="请输入开奖期数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖时间</label>
+                    <div class="layui-input-inline" title="开奖时间">
+                        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+                            <input type="text" class="layui-input" id="predictionGalleryDateUpdate" ng-model="predictionGallery.createdTime" name="createdTime">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容类型</label>
+                    <div class="layui-input-block">
+                        <select lay-verify="required" ng-model="predictionGallery.type" ng-options="contentType.key as contentType.value for contentType in contentTypes" ng-change="config.predictionGalleryUpdateChnage(predictionGallery.type)"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12" ng-show="contentShowFlag">
+                <div class="layui-form-item layui-form-text" >
+                    <label class="layui-form-label">文本内容</label>
+                    <div class="layui-input-block">
+                        <textarea ng-model="predictionGallery.content" name="content" placeholder="请输入内容" class="layui-textarea" style="width: 500px;height: 391px;resize: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6" ng-show="picShowFlag">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">选择图片</label>
+                    <button type="button" class="layui-btn" id="uploadPicaUpdate"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+                </div>
+            </div>
+            <div class="layui-col-md6" ng-show="picShowFlag">
+                <div class="layui-form-item">
+                    <button type="button" 	class="layui-btn layui-btn-primary" ng-click="config.lookPic(predictionGallery.fileRecordUrl)">查看预测图</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.predictionGalleryUpdate()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tableTools">
+    <div class="layui-inline" title="新增" lay-event="add"><i class="layui-icon layui-icon-add-circle"></i></div>
+    <div class="layui-inline" title="删除" lay-event="delete"><i class="layui-icon layui-icon-delete"></i></div>
+    <div class="layui-inline" title="编辑" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></div>
+</script>

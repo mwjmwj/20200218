@@ -1,0 +1,228 @@
+<div ng-controller="lotteryRecordController">
+    <div id="lotteryRecordList">
+        <table id="lotteryRecordTable" lay-filter="lotteryRecordListFilter"></table>
+    </div>
+    <div id="lotteryRecordAddPage" ng-show="lotteryRecordAddPageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖时间</label>
+                    <div class="layui-input-inline" title="开奖时间">
+                        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+                            <input type="text" class="layui-input" id="lotteryDateAdd" ng-model="lotteryRecord.lotteryDate" name="lotteryDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖期数</label>
+                    <div class="layui-input-inline" title="开奖期数">
+                        <input ng-model="lotteryRecord.lotteryPeriod" type="text" name="lotteryPeriod" required lay-verify="required" placeholder="请输入开奖期数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.lotteryRecordRandom()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">随机生成中奖记录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <label class="layui-form-label">中奖数</label>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">类型</label>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[0].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[0].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[1].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[1].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[2].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[2].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[3].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[3].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[4].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[4].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[5].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[5].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[6].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[6].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.lotteryRecordAdd()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lotteryRecordUpdatePage" ng-show="lotteryRecordUpdatePageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖时间</label>
+                    <div class="layui-input-inline" title="开奖时间">
+                        <!--<input ng-model="lotteryRecord.lotteryDate" type="text" name="lotteryDate" required lay-verify="required" placeholder="请输入开奖时间" autocomplete="off" class="layui-input">-->
+                        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+                            <input type="text" class="layui-input" id="lotteryDateUpdate" ng-model="lotteryRecord.lotteryDate" name="lotteryDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开奖期数</label>
+                    <div class="layui-input-inline" title="开奖期数">
+                        <input ng-model="lotteryRecord.lotteryPeriod" type="text" name="lotteryPeriod" required lay-verify="required" placeholder="请输入开奖期数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.lotteryRecordRandom()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">随机更新中奖记录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <label class="layui-form-label">中奖数</label>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">类型</label>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[0].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[0].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[1].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[1].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[2].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[2].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[3].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[3].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[4].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[4].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[5].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[5].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <select style="width: 130px;height: 30px;margin-left: 10px;margin-bottom: 10px;" lay-verify="required" ng-model="lotteryRecord.lotteryRecordDetails[6].number" ng-options="number.key as number.value for number in numberArray"></select>
+            </div>
+            <div class="layui-col-md6">
+                <label class="layui-form-label">{{lotteryRecord.lotteryRecordDetails[6].type==1?"平码":"特码"}}</label>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.lotteryRecordUpdate()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="addImg">
+    <a class="layui-btn layui-btn-xs" lay-event="addimg">添加图片</a>
+</script>
+<script type="text/html" id="tableTools">
+    <div class="layui-inline" title="新增" lay-event="add"><i class="layui-icon layui-icon-add-circle"></i></div>
+    <div class="layui-inline" title="删除" lay-event="delete"><i class="layui-icon layui-icon-delete"></i></div>
+    <div class="layui-inline" title="编辑" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></div>
+</script>

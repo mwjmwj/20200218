@@ -1,0 +1,28 @@
+<div ng-controller="chromaRankingController">
+    <div class="gongGao">
+        <div class="movie">
+            <div class="kjGg" style="width:1000px">
+                <h2>波色排位</h2>
+                <div class="kjgg0" style="min-height: 500px;">
+                    <div style="display:grid;grid-auto-flow: column;grid-auto-columns: 33%;padding: 90px 120px;padding-top: 36px;overflow-y: auto;">
+                        <div ng-repeat="item in colorType" style="padding: 0px 58px;">
+                            <div style="width: 100%;font-size: 60px;text-align: center;margin-bottom: 20px;" ng-show="$index==0" ng-repeat="itemnum in item.num">{{itemnum.colorText}}</div>
+                        	<div class="r_ball" style="background:{{item.color?item.color:'#000'}};float:left;" ng-repeat="itemnum in item.num">{{numParseString(itemnum.num)}}</div>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- <div>
+                            <div class="r_ball" ng-repeat="item in redBall">{{item}}</div>
+                        </div>
+                        <div>
+                            <div class="g_ball" ng-repeat="item in greenBall">{{item}}</div>
+                        </div>
+                        <div>
+                            <div class="b_ball" ng-repeat="item in blueBall">{{item}}</div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div ng-controller="lotteryRecordContentController">
+    <div class="gongGao">
+        <div class="movie" style="min-height: auto;">
+            <div class="kjGg" style="width:1000px">
+                <h2>開獎記錄</h2>
+                <div class="kjgg0">
+                	
+                	<label style="padding-left:10px;">時間：</label>
+                	<select class="myforminput" ng-model="chooseYear" ng-options="contentType as contentType for contentType in yearList" ng-change="chooseYearChange(chooseYear)"></select>
+                	<!-- <select id="cychoose" class="myforminput" onchange="changeYear(event)" ng-model="chooseYear">
+                		<option ng-repeat="item in yearList" value="{{item}}">{{item}}</option>
+                	</select> -->
+                    <table class="layui-table lottery" style="margin: 0;">
+                        <thead>
+                            <tr>
+                            <th lay-data="{field:'username', width:10}" rowspan="3">日期</th>
+                            <th lay-data="{field:'username', width:10}" rowspan="3">期數</th>
+                            <th lay-data="{field:'amount', width:120}" rowspan="3">正碼</th>
+                            <th lay-data="{field:'amount', width:60}" rowspan="3">特碼</th>
+
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">特肖</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">特波</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">特頭</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">單雙</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">五行</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">家野</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">大小</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">尾數</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">男女</th>
+                            <th lay-data="{field:'amount', width:40}" rowspan="3">合數々單雙</th>
+                            <!-- <th lay-data="{align:'center'}" colspan="3">总和</th>
+                            <th lay-data="{align:'center'}" colspan="5">特码</th> -->
+                            </tr>
+                            <!-- <tr>
+                            <th lay-data="{field:'province'}" rowspan="2">总数</th>
+                            <th lay-data="{field:'city'}" rowspan="2">单双</th>
+                            <th lay-data="{field:'citys'}" rowspan="2">大小</th>
+                            </tr>
+                            <tr>
+                            <th lay-data="{field:'street'}" rowspan="2">单双</th>
+                            <th lay-data="{field:'address'}">大小</th>
+                            <th lay-data="{field:'house'}">合单双</th>
+                            <th lay-data="{field:'addresss'}">合大小</th>
+                            <th lay-data="{field:'houses'}">尾大小</th>
+                            </tr> -->
+                        </thead>
+                        <tbody>
+                        	<tr ng-repeat="item in tableData">
+                        		<td>{{item.lotteryDate | date:'yyyy-MM-dd'}}</td>
+                                <td>{{item.lotteryPeriod}}</td>
+                        		<td>
+                        			<div style="width:fit-content;margin:0 auto;">
+                        				<div ng-show="$index<6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left;margin-left:5px;">
+	                        				<label class="g_ball" style="background:{{pmlist.color}};font-size: 14px">{{numParseString(pmlist.number)}}{{pmlist.zodiac}}</label>
+	                        			</div>
+                                        <!--<div ng-show="$index<6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left">
+                                            <div class="{{numBallColor(pmlist.number).colorClass}} ballbg">
+                                                <label>{{pmlist.number}}</label>
+                                            </div>
+                                            <div style="text-align: center;">{{pmlist.zodiac}}</div>
+                                        </div>-->
+	                        			<div class="clear"></div>
+                        			</div>
+                                    <!-- <label class="g_ball">49</label>猪
+                                    <label class="r_ball">7</label>蛇
+                                    <label class="b_ball">17</label>狗
+                                    <label class="r_ball">34</label>虎
+                                    <label class="b_ball">42</label>马
+                                    <label class="r_ball">24</label>鼠 -->
+                                </td>
+                                <td>
+                                	<div style="width:fit-content;margin:0 auto;">
+                        				<!--<div ng-show="$index==6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left">
+                                            <div class="{{numBallColor(pmlist.number).colorClass}} ballbg">
+                                                <label>{{pmlist.number}}</label>
+                                            </div>
+                                            <div style="text-align: center;">{{pmlist.zodiac}}</div>
+	                        			</div>-->
+                                        <div ng-show="$index==6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left">
+                                            <label class="g_ball" style="background:{{pmlist.color}};font-size: 14px">{{numParseString(pmlist.number)}}{{pmlist.zodiac}}</label>
+                                        </div>
+	                        			<div class="clear"></div>
+                        			</div>
+                                </td>
+                                <td>{{item.specialZodic}}</td>
+                                <td>{{item.specialColor}}</td>
+                                <td>{{item.specialHeader}}</td>
+                                <td>{{item.singleAndDouble}}</td>
+                                <td>{{item.fiveElements}}</td>
+                                <td>{{item.homeField}}</td>
+                                <td>{{item.bigOrSmall}}</td>
+                                <td>{{item.tailNum}}</td>
+                                <td>{{item.manOrWoman}}</td>
+                                <td>{{item.heShuang}}</td>
+                        	</tr>
+                            
+                        </tbody>
+                    </table>
+                    <div id="pagefy" style="padding: 0 10px;"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="gongGao">
+        <div class="containerHome" style="width: 1000px;">
+            <div class="kjGg" style="width:100%">
+                <h2>特碼走勢</h2>
+                <div class="kjgg0  kjgg01">
+                    <label style="padding-left:10px;">時間：</label>
+                    <select class="myforminput" ng-model="chooseYear" ng-options="contentType as contentType for contentType in yearList" ng-change="chooseYearChanges(chooseYear)"></select>
+                    <div id="mainEcharts" style="width:1000px;height:400px"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

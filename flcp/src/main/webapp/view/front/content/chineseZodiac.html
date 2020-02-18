@@ -1,0 +1,40 @@
+<script src="static/img/zodiacs/zodiacDesc.js"></script>
+<div ng-controller="chineseZodiacController">
+    <div class="gongGao">
+        <div class="movie">
+            <div class="kjGg" style="width:1000px">
+                <h2>十二生肖</h2>
+                <div class="kjgg0" style="min-height: 800px;">
+                    <div style="display:grid;grid-template-columns: repeat(4,calc(100% / 4));padding: 10px;">
+                        <div ng-repeat="item in chineseList" style="margin-bottom: 5px">
+                            <div style="float: left">
+                                <img style="width:82px;height:67px;" src="static/img/zodiacs/{{$index}}.png" />
+                            </div>
+                            <div style="float: left;position: relative;height: 67px;width: calc(100% - 82px);">
+                                <div style="position: absolute;top: 0;padding-left: 5px;">{{textListZodiac[$index]}}</div>
+                                <div style="display: flex;position: absolute;bottom: 0;">
+                                    <div class="b_ball" ng-repeat="items in item.num" style="background:{{items.color}}">{{numParseString(items.num)}}</div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div style="display:flex">
+                        <div ng-repeat="item in chineseList" style="{{showZo($index)?'border: 3px solid #ff5757; box-sizing: border-box; margin-top: -5px;':''}}margin-left: 1px" ng-click="clickZodiac($index)">
+                            <img style="width:82px;height:67px;" src="static/img/zodiacs/{{$index}}.png" />
+                        </div>
+                    </div>
+
+                    <div style="padding:10px;">
+                        <div style="font-size: 62px;width: fit-content;margin: 0 auto;margin-top: 24px;">{{showZodiac}}</div>
+                        <div style="display:flex;width: fit-content;margin: 0 auto;margin-top: 20px;">
+                            <div class="b_ball" ng-repeat="item in showNum" style="background:{{item.color}}">{{numParseString(item.num)}}</div>
+                        </div>
+                        <div style="text-indent: 2em;margin-top: 26px;">{{showText}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

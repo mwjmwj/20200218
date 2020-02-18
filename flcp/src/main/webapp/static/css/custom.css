@@ -1,0 +1,27 @@
+.linecenter{
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    pointer-events: none;
+}
+.ball_bg{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+}
+.red_ball_bg{
+    background: url(../static/img/ball_red.png);
+    background-size: 100%;
+}
+
+.green_ball_bg{
+    background: url(../static/img/ball_green.png);
+    background-size: 100%;
+}
+.blue_ball_bg{
+    background: url(../static/img/ball_blue.png);
+    background-size: 100%;
+}

@@ -1,0 +1,107 @@
+<div ng-controller="predictionGalleryContentController">
+    <div class="gongGao" style="display:none">
+        <div class="movie">
+            <div class="kjGg" style="width:1000px">
+                <h2>預測圖庫</h2>
+                <div class="kjgg0">
+                    <label style="padding-left:10px;">時間：</label>
+                    <select class="myforminput" ng-model="chooseYear" ng-options="contentType as contentType for contentType in yearList" ng-change="chooseYearChange(chooseYear)"></select>
+                	<table class="layui-table lottery" style="margin: 0;">
+                        <thead>
+                            <tr>
+	                            <th lay-data="{field:'amount1', width:120}" rowspan="3">標題</th>
+	                            <th lay-data="{field:'username1', width:10}" rowspan="3">日期</th>
+	                            <th lay-data="{field:'username2', width:10}" rowspan="3">期數</th>
+	                            <th lay-data="{field:'amount2', width:120}" rowspan="3">內容類型</th>
+	                            <th lay-data="{field:'amount3', width:120}" rowspan="3">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<tr ng-repeat="item in tableData">
+                        		<td>{{item.title}}</td>
+                        		<td>{{item.createdTime | date:'yyyy-MM-dd'}}</td>
+                        		<td>{{item.lotteryPeriod}}</td>
+                        		<td>{{item.typeName}}</td>
+                        		<td><div ng-bind-html="item.doFnSomeThings"></div></td>
+                        	</tr>
+                        </tbody>
+                    </table>
+                    <div id="pagefy" style="padding: 0 10px;"></div>
+                    <!-- <div>
+                        <div style="margin:10px;">
+                            <ul class="caizhonglist_first">
+                                <li lang="97" class="">樂合彩王</li>
+                                <li lang="96" class="checked">玄學解詩</li>
+                                <li lang="95" class="">金太陽</li>
+                                <li lang="94" class="">樂合賽馬會</li>
+                                <li lang="93">樂合聯合報</li>
+                                <li lang="92">樂合妙算王</li>
+                                <li lang="91">樂合特碼報</li>
+                                <li lang="89">黃金策略</li>
+                                <li lang="87">抓碼王</li>
+                                <li lang="81">樂合信息報B</li>
+                                <li lang="80">樂合神算</li>
+                                <li lang="79"> 樂合賭王</li>
+                                <li lang="78">小四喜</li>
+                                <li lang="77"> 南山海上觀音報</li>
+                                <li lang="76"> 福星送特</li>
+                                <li lang="75" class="">臺灣神廟</li>
+                                <li lang="74"> 神醫藥方</li>
+                                <li lang="58" class="">開彩日必出生肖</li>
+                                <li lang="48" class="">火燒圖</li>
+                                <li lang="44" class=""> 勝算策略報</li>
+                                <li lang="42">樂合信息報</li>
+                                <li lang="41">天線寶寶</li>
+                                <li lang="37">彩霸王報</li>
+                                <li lang="35">吉數神算報</li>
+                                <li lang="33">三合皇報</li>
+                                <li lang="31">樂合綜合報</li>
+                                <li lang="20"> 內幕傳真</li>
+                                <li lang="17">白小姐特碼通</li>
+                                <li lang="2"> 樂合正版掛牌</li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="seizeas"></div>
+            <!-- <div class="kjGg" style="width:1000px">
+                <div class="title">
+                    <label style="flex:1;line-height: 36px;font-size: 20px;font-weight: 600;">玄學解詩</label>
+                    <div style="display:flex;align-items: center;">
+                        <a href="../../static/img/preimg.jpg" class="dosometing"
+                            download="../../static/img/preimg.jpg">保存图片</a>
+                        <span class="dosometing" id="print">打印图片</span>
+                    </div>
+                </div>
+                <div class="kjgg0" style="padding:30px;">
+                    <img id="print_target" src="../../static/img/preimg.jpg">
+                </div>
+            </div> -->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="gongGao">
+        <div style="width: 1000px;min-height: 400px;border: #471797 solid 1px;background: #1b0b37;border-radius: 2px;margin-top: 10px;margin-left: 15px;">
+            <div class="index-label-title">
+                預測圖庫
+            </div>
+            <div style="margin-top: 10px;padding: 10px;" ng-repeat="item in showList">
+                <div style="display: flex;width: fit-content;margin: 0 auto;font-size: 24px;">
+                    <div style="float: left">{{item.lotteryDate | date:'yyyy-MM-dd'}}</div>
+                    <div style="float: left">第{{item.lotteryPeriod}}期</div>
+                    <div class="clear"></div>
+                </div>
+                <div ng-repeat="pic in item.pictures" ng-click="clickPic(pic.url)" class="pic_list">
+                    {{pic.title}}
+                </div>
+                <div class="clear"></div>
+                <div style="margin: 20px;">
+                    <img ng-src={{seePic}} style="width: 100%;" ng-click="openPic(seePic)"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
