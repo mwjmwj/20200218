@@ -16,7 +16,7 @@
                             <th lay-data="{field:'username', width:10}" rowspan="3">日期</th>
                             <th lay-data="{field:'username', width:10}" rowspan="3">期數</th>
                             <th lay-data="{field:'amount', width:120}" rowspan="3">正碼</th>
-                            <th lay-data="{field:'amount', width:60}" rowspan="3">特碼</th>
+                            <!--<th lay-data="{field:'amount', width:60}" rowspan="3">特碼</th>-->
 
                             <th lay-data="{field:'amount', width:40}" rowspan="3">特肖</th>
                             <th lay-data="{field:'amount', width:40}" rowspan="3">特波</th>
@@ -51,7 +51,7 @@
                         		<td>
                         			<div style="width:fit-content;margin:0 auto;">
                         				<div ng-show="$index<6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left;margin-left:5px;">
-	                        				<label class="g_ball" style="background:{{pmlist.color}};font-size: 14px">{{numParseString(pmlist.number)}}{{pmlist.zodiac}}</label>
+	                        				<label class="g_ball" style="background:{{pmlist.colorCode}};font-size: 14px">{{numParseString(pmlist.num)}}{{pmlist.animal}}</label>
 	                        			</div>
                                         <!--<div ng-show="$index<6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left">
                                             <div class="{{numBallColor(pmlist.number).colorClass}} ballbg">
@@ -77,12 +77,12 @@
                                             <div style="text-align: center;">{{pmlist.zodiac}}</div>
 	                        			</div>-->
                                         <div ng-show="$index==6" ng-repeat="pmlist in item.lotteryRecordDetails" style="float:left">
-                                            <label class="g_ball" style="background:{{pmlist.color}};font-size: 14px">{{numParseString(pmlist.number)}}{{pmlist.zodiac}}</label>
+                                            <label class="g_ball" style="background:{{pmlist.colorCode}};font-size: 14px">{{numParseString(pmlist.num)}}{{pmlist.animal}}</label>
                                         </div>
 	                        			<div class="clear"></div>
                         			</div>
                                 </td>
-                                <td>{{item.specialZodic}}</td>
+                                <!--<td>{{item.specialZodic}}</td>-->
                                 <td>{{item.specialColor}}</td>
                                 <td>{{item.specialHeader}}</td>
                                 <td>{{item.singleAndDouble}}</td>

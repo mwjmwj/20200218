@@ -1,4 +1,4 @@
-package top.flcp.config;
+package com.cp.config;
 
 import org.beetl.core.resource.ClasspathResourceLoader;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;

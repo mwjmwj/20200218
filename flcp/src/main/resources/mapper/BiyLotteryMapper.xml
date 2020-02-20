@@ -268,4 +268,13 @@
       create_tm = #{createTm,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!-- 特码走势图 -->
+  <select id="getSpecialCodeTrendChart" resultType="com.cp.bean.BiyLottery">
+    select
+    <include refid="Base_Column_List" />
+    from t_diy_lottery a
+    where year (a.create_tm) = #{lotteryYear}
+  </select>
+
 </mapper>

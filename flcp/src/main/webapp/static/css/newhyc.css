@@ -218,7 +218,21 @@ table td,table th{
 }
 .ztz{width:753px; height:20px;position: relative;top: 60px; line-height:20px; color:#00fffc; text-align:center;position: relative;top: 60px;}
 .ztz span{color:#a687ff;}
-.kaijiang{width:490px; height:90px;position: relative;top: 82px;left: 154px;}
+.kaijiang{width:490px; height:90px;position: relative;top: 82px;left: 73px;}
+
+.sixadv{
+    position: absolute;
+    top: 45%;
+    right: 50px;
+}
+
+.sixadv a{
+    display: block;
+    width: 136px;
+    height: 71px;
+    background: url(../static/img/tblogos.png) 0 0px no-repeat;
+}
+
 .tongbu{
     width:753px;
     height:20px;

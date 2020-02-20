@@ -2,6 +2,7 @@ package com.cp.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Lottery implements Serializable {
     /**
@@ -472,5 +473,18 @@ public class Lottery implements Serializable {
      */
     public void setEndTm(Date endTm) {
         this.endTm = endTm;
+    }
+
+    /**
+     * 彩票信息对应的详情
+     */
+    public List<LotteryDetail> lotteryRecordDetails;
+
+    public List<LotteryDetail> getLotteryDetails() {
+        return lotteryRecordDetails;
+    }
+
+    public void setLotteryDetails(List<LotteryDetail> lotteryRecordDetails) {
+        this.lotteryRecordDetails = lotteryRecordDetails;
     }
 }

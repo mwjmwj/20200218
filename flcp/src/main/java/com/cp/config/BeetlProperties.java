@@ -1,4 +1,4 @@
-package top.flcp.config;
+package com.cp.config;
 
 import java.util.Properties;
 

@@ -68,40 +68,40 @@
                                 <div style="text-align: center;">{{item.zodiac}}</div>
                             </div>-->
                             <div>
-                                <div id="ball1" class="{{numBallColor(lotteryRecord.numList[0].number).colorClass}} ballbg">
-                                    <label>{{numParseString(lotteryRecord.numList[0].number)}}</label>
+                                <div id="ball1" class="{{numBallColor(lotteryRecord.numList[0].num).colorClass}} ballbg">
+                                    <label>{{numParseString(lotteryRecord.numList[0].num)}}</label>
                                 </div>
-                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[0].zodiac}}</div>
+                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[0].animal}}</div>
                             </div>
                             <div>
-                                <div id="ball2" class="{{numBallColor(lotteryRecord.numList[1].number).colorClass}} ballbg">
-                                    <label>{{numParseString(lotteryRecord.numList[1].number)}}</label>
+                                <div id="ball2" class="{{numBallColor(lotteryRecord.numList[1].num).colorClass}} ballbg">
+                                    <label>{{numParseString(lotteryRecord.numList[1].num)}}</label>
                                 </div>
-                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[1].zodiac}}</div>
+                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[1].animal}}</div>
                             </div>
                             <div>
-                                <div id="ball3" class="{{numBallColor(lotteryRecord.numList[2].number).colorClass}} ballbg">
-                                    <label>{{numParseString(lotteryRecord.numList[2].number)}}</label>
+                                <div id="ball3" class="{{numBallColor(lotteryRecord.numList[2].num).colorClass}} ballbg">
+                                    <label>{{numParseString(lotteryRecord.numList[2].num)}}</label>
                                 </div>
-                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[2].zodiac}}</div>
+                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[2].animal}}</div>
                             </div>
                             <div>
-                                <div id="ball4" class="{{numBallColor(lotteryRecord.numList[3].number).colorClass}} ballbg">
-                                    <label>{{numParseString(lotteryRecord.numList[3].number)}}</label>
+                                <div id="ball4" class="{{numBallColor(lotteryRecord.numList[3].num).colorClass}} ballbg">
+                                    <label>{{numParseString(lotteryRecord.numList[3].num)}}</label>
                                 </div>
-                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[3].zodiac}}</div>
+                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[3].animal}}</div>
                             </div>
                             <div>
-                                <div id="ball5" class="{{numBallColor(lotteryRecord.numList[4].number).colorClass}} ballbg">
-                                    <label>{{numParseString(lotteryRecord.numList[4].number)}}</label>
+                                <div id="ball5" class="{{numBallColor(lotteryRecord.numList[4].num).colorClass}} ballbg">
+                                    <label>{{numParseString(lotteryRecord.numList[4].num)}}</label>
                                 </div>
-                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[4].zodiac}}</div>
+                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[4].animal}}</div>
                             </div>
                             <div>
-                                <div id="ball6" class="{{numBallColor(lotteryRecord.numList[5].number).colorClass}} ballbg">
-                                    <label>{{numParseString(lotteryRecord.numList[5].number)}}</label>
+                                <div id="ball6" class="{{numBallColor(lotteryRecord.numList[5].num).colorClass}} ballbg">
+                                    <label>{{numParseString(lotteryRecord.numList[5].num)}}</label>
                                 </div>
-                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[5].zodiac}}</div>
+                                <div class="zod" style="text-align: center;">{{lotteryRecord.numList[5].animal}}</div>
                             </div>
 <!--                            <label ng-repeat="item in lotteryRecord.numList" style="margin: 0;margin-left:5px;font-size: 14px;background:{{item.color}}" class="g_ball ball_c">{{item.number}}{{item.zodiac}}</label>-->
                         </div>
@@ -109,10 +109,10 @@
                             特碼：
                         </div>
                         <div>
-                            <div id="ball7" class="{{numBallColor(lotteryRecord.tm.number).colorClass}} ballbg">
-                                <label>{{numParseString(lotteryRecord.tm.number)}}</label>
+                            <div id="ball7" class="{{numBallColor(lotteryRecord.tm.num).colorClass}} ballbg">
+                                <label>{{numParseString(lotteryRecord.tm.num)}}</label>
                             </div>
-                            <div class="zod" style="text-align: center;">{{lotteryRecord.tm.zodiac}}</div>
+                            <div class="zod" style="text-align: center;">{{lotteryRecord.tm.animal}}</div>
 <!--                            <label ng-show="lotteryRecord.tm.number" style="margin: 0;font-size: 14px;background:{{lotteryRecord.tm.color}}" class="g_ball ball_c">{{lotteryRecord.tm.number}}{{lotteryRecord.tm.zodiac}}</label>-->
                         </div>
                     </div>
@@ -120,6 +120,10 @@
                         {{timeOpenDay||0}}天{{timeOpenHour||0}}小时{{timeOpenM||0}}分钟{{timeOpenS||0}}秒
                     </div>
                     <div style="text-align: center;margin-top: 8px;"><!-- 第{{timeNextPeriod}}期 --> 下一期開獎時間:<span ng-show="isDateNull(timeNextOpen)">{{timeNextOpen | date:'MM月dd日 HH点mm分'}}</span></div>
+
+                </div>
+                <div class="sixadv">
+                    <a href="http://xjp666.net/KaijVideo.asp" id="sixadv" target="_blank" ></a>
                 </div>
                 <div class="tongbu">澳門葡合彩官方網 開獎與亞洲電視臺現場同步播出，自動更新無須手動刷新</div>
             </div>

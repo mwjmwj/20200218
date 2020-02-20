@@ -73,12 +73,20 @@ mybatis:
   configuration:
     # 开启驼峰uName自动映射到u_name
     map-underscore-to-camel-case: true
-  mapper-locations: classpath:**/*Mapper.xml
+    log-impl: null #打印结果集 org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:**/*Mapper.xml
+
+# 配置pagehelper参数
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 # 打印sql
 logging:
   level:
-    ssm.app.mapper: debug
+    com.co.dao: debug
 
 beetl:
   resource-auto-check: true #热加载beetl模板，开发时候用
