@@ -4,6 +4,7 @@ import com.cp.bean.Lottery;
 import com.cp.bean.LotteryExample;
 
 import java.util.List;
+import java.util.Map;
 
 public interface LotteryMapper extends BaseMapper<LotteryExample,Lottery>{
 
