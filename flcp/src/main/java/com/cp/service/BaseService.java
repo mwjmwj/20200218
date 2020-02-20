@@ -11,7 +11,7 @@ public abstract class BaseService<T,T1> {
 
     public abstract void initMapper();
 
-    long countByExample(T example){
+    public long countByExample(T example){
         return baseMapper.countByExample(example);
     }
 
@@ -21,7 +21,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int deleteByExample(T example){
+    public int deleteByExample(T example){
         return baseMapper.deleteByExample(example);
     }
 
@@ -31,7 +31,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int deleteByPrimaryKey(Long id){
+    public int deleteByPrimaryKey(Long id){
         return baseMapper.deleteByPrimaryKey(id);
     }
 
@@ -41,7 +41,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int insert(T1 record){
+    public int insert(T1 record){
         return baseMapper.insert(record);
     }
 
@@ -51,7 +51,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int insertSelective(T1 record){
+    public int insertSelective(T1 record){
         return baseMapper.insertSelective(record);
     }
 
@@ -61,7 +61,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    List<T1> selectByExample(T example){
+    public List<T1> selectByExample(T example){
         return baseMapper.selectByExample(example);
     }
 
@@ -71,7 +71,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    T1 selectByPrimaryKey(Long id){
+    public T1 selectByPrimaryKey(Long id){
         return baseMapper.selectByPrimaryKey(id);
     }
 
@@ -81,7 +81,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int updateByExampleSelective(@Param("record") T1 record, @Param("example") T example){
+    public int updateByExampleSelective(@Param("record") T1 record, @Param("example") T example){
         return baseMapper.updateByExampleSelective(record,example);
     }
 
@@ -91,7 +91,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int updateByExample(@Param("record") T1 record, @Param("example") T example){
+    public int updateByExample(@Param("record") T1 record, @Param("example") T example){
         return baseMapper.updateByExample(record,example);
     }
 
@@ -101,7 +101,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int updateByPrimaryKeySelective(T1 record){
+    public int updateByPrimaryKeySelective(T1 record){
         return baseMapper.updateByPrimaryKeySelective(record);
     }
 
@@ -111,7 +111,7 @@ public abstract class BaseService<T,T1> {
      *
      * @mbg.generated
      */
-    int updateByPrimaryKey(T1 record){
+    public int updateByPrimaryKey(T1 record){
         return baseMapper.updateByPrimaryKey(record);
     }
 }

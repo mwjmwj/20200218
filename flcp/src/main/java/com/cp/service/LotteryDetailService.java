@@ -8,6 +8,8 @@ import com.cp.dao.LotteryDetailMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LotteryDetailService extends BaseService<LotteryDetailExample,LotteryDetail> {
 
@@ -19,4 +21,7 @@ public class LotteryDetailService extends BaseService<LotteryDetailExample,Lotte
         baseMapper = mapper;
     }
 
+    public List<LotteryDetail> listDetail(Long id) {
+        return mapper.listDetail(id);
+    }
 }
