@@ -238,6 +238,6 @@
   </update>
 
   <select id="listAll" resultMap="BaseResultMap">
-    select *from t_year_num
+    select *from t_year_num where num = 0
   </select>
 </mapper>

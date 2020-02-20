@@ -1,17 +1,13 @@
 package com.cp.service;
 
-import cn.hutool.core.util.NumberUtil;
 import com.cp.bean.Lottery;
 import com.cp.bean.LotteryExample;
 import com.cp.dao.BaseMapper;
 import com.cp.dao.LotteryMapper;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class LotteryService extends BaseService<LotteryExample,Lottery> {
@@ -27,6 +23,10 @@ public class LotteryService extends BaseService<LotteryExample,Lottery> {
 
     public List<Lottery> listNotLottery() {
         return mapper.listNotLottery();
+    }
+
+    public void startPeriod() {
+        mapper.startPeriod();
     }
 
     public PageInfo<List<Lottery>> lotteryRecordListCommon(Map<String,Object> map){

@@ -450,6 +450,16 @@
     t_lottery where end_flag = 0
   </select>
 
+  <update id="startPeriod">
+    update t_lottery set end_flag = 0 where now() &gt; begin_tm and end_flag = '-1'
+
+  </update>
+
+  <select id="getLastByYear" resultMap="BaseResultMap">
+    select max(period) as period from
+    t_lottery where substr(period,1,4) = #{i} limit 1
+  </select>
+
   <!-- 查询彩票记录 -->
   <select id="lotteryRecordListCommon" resultMap="BaseResultMap_Details">
     select a.*

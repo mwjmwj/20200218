@@ -269,6 +269,13 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
+
+  <select id="getLottery" resultMap="BaseResultMap">
+    select * from t_diy_lottery where
+    period = #{period} limit 1
+
+  </select>
+
   <!-- 特码走势图 -->
   <select id="getSpecialCodeTrendChart" resultType="com.cp.bean.BiyLottery">
     select

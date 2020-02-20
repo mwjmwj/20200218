@@ -6,6 +6,8 @@ import com.cp.dao.YearNumMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 @Service
 public class YearNumService extends BaseService<YearNumExample,YearNum> {
 
@@ -13,6 +15,7 @@ public class YearNumService extends BaseService<YearNumExample,YearNum> {
     private YearNumMapper mapper;
 
     @Override
+    @PostConstruct
     public void initMapper() {
         baseMapper = mapper;
     }

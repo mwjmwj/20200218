@@ -595,6 +595,76 @@ public class LotteryDetailExample {
             return (Criteria) this;
         }
 
+        public Criteria andAnimalIsNull() {
+            addCriterion("animal is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalIsNotNull() {
+            addCriterion("animal is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalEqualTo(String value) {
+            addCriterion("animal =", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalNotEqualTo(String value) {
+            addCriterion("animal <>", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalGreaterThan(String value) {
+            addCriterion("animal >", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalGreaterThanOrEqualTo(String value) {
+            addCriterion("animal >=", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalLessThan(String value) {
+            addCriterion("animal <", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalLessThanOrEqualTo(String value) {
+            addCriterion("animal <=", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalLike(String value) {
+            addCriterion("animal like", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalNotLike(String value) {
+            addCriterion("animal not like", value, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalIn(List<String> values) {
+            addCriterion("animal in", values, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalNotIn(List<String> values) {
+            addCriterion("animal not in", values, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalBetween(String value1, String value2) {
+            addCriterion("animal between", value1, value2, "animal");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnimalNotBetween(String value1, String value2) {
+            addCriterion("animal not between", value1, value2, "animal");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTmIsNull() {
             addCriterion("create_tm is null");
             return (Criteria) this;
