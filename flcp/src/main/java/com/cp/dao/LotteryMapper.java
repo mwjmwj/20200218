@@ -10,4 +10,7 @@ public interface LotteryMapper extends BaseMapper<LotteryExample,Lottery>{
 
     List<Lottery> listNotLottery();
 
+    void startPeriod();
+
+    Lottery getLastByYear(int i);
 }

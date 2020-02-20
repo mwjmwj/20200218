@@ -268,4 +268,11 @@
       create_tm = #{createTm,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="getLottery" resultMap="BaseResultMap">
+    select * from t_diy_lottery where
+    period = #{period} limit 1
+
+  </select>
 </mapper>

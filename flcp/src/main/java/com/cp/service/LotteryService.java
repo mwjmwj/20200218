@@ -7,6 +7,7 @@ import com.cp.dao.LotteryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
@@ -17,11 +18,16 @@ public class LotteryService extends BaseService<LotteryExample,Lottery> {
     private LotteryMapper mapper;
 
     @Override
+    @PostConstruct
     public void initMapper() {
         baseMapper = mapper;
     }
 
     public List<Lottery> listNotLottery() {
         return mapper.listNotLottery();
+    }
+
+    public void startPeriod() {
+        mapper.startPeriod();
     }
 }
