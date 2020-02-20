@@ -461,6 +461,7 @@
     <where>
       1=1
       and a.id = b.tl_id
+      and a.end_tm >= #{lotteryDateBegin} and a.end_tm &lt;= #{lotteryDateEnd}
     </where>
     order by a.end_tm desc,b.order
   </select>
@@ -472,10 +473,10 @@
     (case b.color when '蓝' then '#0000FF' when '红' then '#FF0000' else '#008000' end) as colorCode,
     b.create_tm,b.order
     from
-    (select * from t_lottery order by end_tm desc limit 1) a,t_lottery_detail b
-    <where>
-      1=1
-      and a.id = b.tl_id
-    </where>
+    (SELECT * FROM t_lottery a where a.id in ((SELECT id from t_lottery WHERE end_flag = 1
+    ORDER BY end_tm DESC
+    LIMIT 1 ),(SELECT id from t_lottery WHERE end_flag = -1
+    ORDER BY end_tm
+    LIMIT 1))) a LEFT JOIN t_lottery_detail b on a.id = b.tl_id
   </select>
 </mapper>

@@ -13,8 +13,8 @@ define(
 
 				}
 				let nowYear = new Date().getFullYear();
-				nowYear = nowYear - 2000 + 1
-				$scope.yearList = Array.from(new Array(nowYear),function(x,y){return y+2000;});
+				nowYear = nowYear - 1969 + 1
+				$scope.yearList = Array.from(new Array(nowYear),function(x,y){return y+1969;});
 				layui.use(['laypage', 'layer'], function(){
 					var laypage = layui.laypage;
 					var layer = layui.layer;

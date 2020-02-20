@@ -150,27 +150,21 @@ define(
                     contentType:'application/json;charset=UTF-8',
                     success : function(data) {
                         if(data&&data.code === '0'&&data.data){
-                            if(data.data){
-                                let timeAfterOpen = data.data;
-                                $scope.lotteryRecord.numList = [];
-                                data.data.lotteryRecordDetails?data.data.lotteryRecordDetails.map(m => {
-                                    if(m.codeType == 0){
-                                        $scope.lotteryRecord.numList.push(m);
-                                    }else{
-                                        $scope.lotteryRecord.tm = m;
-                                    }
-                                }):[];
-                                /*let timeNextOpen = data.data.find(item => {
-                                    return item.type === '1';
-                                })*/
-                                let timeNextOpen = {
-                                    "id": "7bed148da62c4caf9a4411f374efec81",
-                                    "lotteryPeriod": "004",
-                                    "lotteryDate": "2020-03-08 21:30:00",
-                                    "currentDate": "2020-02-20 16:31:46",
-                                    "type": "1",
-                                    "lotteryRecordDetails": null
-                                };
+                            if(data.data.length>0){
+                                let timeAfterOpen = data.data.find(item => {
+                                    $scope.lotteryRecord.numList = [];
+                                    item.lotteryRecordDetails?item.lotteryRecordDetails.map(m => {
+                                        if(m.codeType == 0){
+                                            $scope.lotteryRecord.numList.push(m)
+                                        }else{
+                                            $scope.lotteryRecord.tm = m;
+                                        }
+                                    }):[];
+                                    return item.endFlag == '1';
+                                })
+                                let timeNextOpen = data.data.find(item => {
+                                    return item.endFlag == '-1';
+                                })
                                 $scope.nextOpenId = timeNextOpen?timeNextOpen.id:"";
                                 $scope.timeAfterPeriod = timeAfterOpen?timeAfterOpen.period:"";
                                 $scope.timeNextPeriod = timeNextOpen?timeNextOpen.period:"";
@@ -178,8 +172,8 @@ define(
                                 $scope.timeNextOpen = timeNextOpen?timeNextOpen.endTm:"";
                                 $scope.timeAfterOpen = timeAfterOpen?timeAfterOpen.endTm:"";
                                 $scope.timeAfterOpen = new Date($scope.timeAfterOpen);
-                                $scope.timeNowOpen = timeAfterOpen?timeAfterOpen.endTm:"";
-                                $scope.timeNowOpen = $scope.timeNowOpen?$scope.timeNowOpen:(timeNextOpen?timeNextOpen.endTm:"");
+                                $scope.timeNowOpen = new Date();
+                                //$scope.timeNowOpen = $scope.timeNowOpen?$scope.timeNowOpen:(timeNextOpen?timeNextOpen.beginTm:"");
                                 $scope.timeOpen = (new Date($scope.timeNextOpen).getTime() - new Date($scope.timeNowOpen).getTime());
                                 $scope.startTimeout();
                             }else{

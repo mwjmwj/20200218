@@ -86,7 +86,7 @@ pagehelper:
 # 打印sql
 logging:
   level:
-    com.co.dao: debug
+    com.cp.dao: debug
 
 beetl:
   resource-auto-check: true #热加载beetl模板，开发时候用

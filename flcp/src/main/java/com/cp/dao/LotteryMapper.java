@@ -17,5 +17,5 @@ public interface LotteryMapper extends BaseMapper<LotteryExample,Lottery>{
      * 获取最后一个中级信息
      * @return
      */
-    Lottery getNextLottery();
+    List<Lottery> getNextLottery();
 }

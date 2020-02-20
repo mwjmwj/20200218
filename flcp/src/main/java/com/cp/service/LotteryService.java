@@ -44,7 +44,7 @@ public class LotteryService extends BaseService<LotteryExample,Lottery> {
      * 获取最后一个中奖信息和下一次开奖时间
      * @return
      */
-    public Lottery getNextLottery() {
+    public List<Lottery> getNextLottery() {
         return mapper.getNextLottery();
     }
 }
