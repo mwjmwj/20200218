@@ -86,7 +86,8 @@
         <!--<table tableName='t_base_animal' domainObjectName='BaseAnimal'/>-->
         <!--<table tableName='t_diy_lottery' domainObjectName='BiyLottery'/>-->
         <!--<table tableName='t_lottery' domainObjectName='Lottery'/>-->
-        <table tableName='t_all_period' domainObjectName='AllPeriod'/>
+        <table tableName='t_index_notice' domainObjectName='IndexNotice'/>
+        <table tableName='t_fore_pic' domainObjectName='ForePic'/>
         <!--<table tableName='t_year_num' domainObjectName='YearNum'/>-->
 
 <!--

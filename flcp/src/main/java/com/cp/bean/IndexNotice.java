@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.lang.Long;
+import java.util.List;
 
 /**
  * 首页公告表 IndexNotice 
@@ -29,7 +30,17 @@ public class IndexNotice implements Serializable {
 	/** 联系方式 **/
 	@ApiModelProperty(value = "联系方式")
 	private String contactInfo;
-		
+
+	private List<String> contactInfos;
+
+	public List<String> getContactInfos() {
+		return contactInfos;
+	}
+
+	public void setContactInfos(List<String> contactInfos) {
+		this.contactInfos = contactInfos;
+	}
+
 	/** 预测图库 **/
 	@ApiModelProperty(value = "预测图库")
 	private String picUrl;

@@ -89,16 +89,16 @@
             </div>
             <div style="margin-top: 10px;padding: 10px;" ng-repeat="item in showList">
                 <div style="display: flex;width: fit-content;margin: 0 auto;font-size: 24px;">
-                    <div style="float: left">{{item.lotteryDate | date:'yyyy-MM-dd'}}</div>
-                    <div style="float: left">第{{item.lotteryPeriod}}期</div>
+                    <!--<div style="float: left">{{item.lotteryDate | date:'yyyy-MM-dd'}}</div>-->
+                    <div style="float: left">第{{item.name}}</div>
                     <div class="clear"></div>
                 </div>
-                <div ng-repeat="pic in item.pictures" ng-click="clickPic(pic.url)" class="pic_list">
-                    {{pic.title}}
-                </div>
-                <div class="clear"></div>
+                <!--<div ng-click="clickPic(item.url)" class="pic_list">-->
+                    <!--{{pic.name}}-->
+                <!--</div>-->
+                <!--<div class="clear"></div>-->
                 <div style="margin: 20px;">
-                    <img ng-src={{seePic}} style="width: 100%;" ng-click="openPic(seePic)"/>
+                    <img ng-src={{item.url}} style="width: 100%;" ng-click="openPic(item.url)"/>
                 </div>
             </div>
         </div>
