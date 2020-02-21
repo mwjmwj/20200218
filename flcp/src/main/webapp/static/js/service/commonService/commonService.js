@@ -88,10 +88,10 @@ define(
                 if (sec < 10) sec = "0" + sec;
                 return year + "-" + month + "-" + date + " " + hour + ":" + minu + ":" + sec;
             };
-            this.dictionaryByDictionaryTypeId=function(dictionaryType){
+            this.dictionaryByDictionaryTypeId=function(subUrl){
                 let result = {};
                 $.ajax({
-                    url:this.webName('/dictionary/dictionaryByDictionaryId?dictionaryTypeId='+dictionaryType),
+                    url:this.webName(subUrl),
                     type:'GET',
                     async:false,
                     dataType:'json',
@@ -100,7 +100,7 @@ define(
                         result = data;
                     },
                     error:function(data){
-                        result.msgs=[data.statusText+"请配置页面配置，字典类型ID为pageConfig"];
+                        result.msgs=[data.statusText+"系统异常!"];
                         result.code=-1;
                     }
                 });

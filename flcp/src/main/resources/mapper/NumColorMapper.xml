@@ -273,4 +273,9 @@
     select *from t_num_color
   </select>
 
+  <!-- 数字颜色对应的生肖 -->
+  <select id="getNumColorOnAnimals" resultType="java.util.Map">
+    SELECT t1.id,t1.num,t1.wuxing,t1.color,t2.name,t2.jiaye,t2.sex,t2.name_desc AS nameDesc FROM `t_num_color` t1 LEFT JOIN t_base_animal t2 ON t1.`num`%12 = t2.`order`%12
+  </select>
+
 </mapper>

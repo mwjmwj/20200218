@@ -5,7 +5,7 @@ define(
 			$scope.numParseString = numParseString;
         	$scope.init = function(){
         		$scope.isInit = "1";
-            	var colorList = commonService.dictionaryByDictionaryTypeId(commonService.constant.dictionaryTypeIds.color);
+            	var colorList = commonService.dictionaryByDictionaryTypeId('/numColor/getNumColors');
                 if(colorList.code === "0"){
                 	window.colorList = colorList.data;
                 }else{
@@ -14,11 +14,11 @@ define(
                 let colorType = {};
                 for(let i in window.colorList){
                 	let colort = window.colorList[i];
-                	if(colort&&colort.value&&colorType[colort.value]){
-                		colorType[colort.value].push({num:colort.name,colorText:colort.desc});
+                	if(colort&&colort.colorCode&&colorType[colort.colorCode]){
+                		colorType[colort.colorCode].push({num:colort.num,colorText:colort.color});
                 	}else{
-                		if(colort.value){
-                			colorType[colort.value] = [{num:colort.name,colorText:colort.desc}];
+                		if(colort.colorCode){
+                			colorType[colort.colorCode] = [{num:colort.num,colorText:colort.color}];
                 		}
                 	}
                 }

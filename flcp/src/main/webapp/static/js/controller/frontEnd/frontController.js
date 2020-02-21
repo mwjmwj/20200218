@@ -11,13 +11,15 @@ define(
             jt.map((item,index) => {
                 window.zodiacList[item] = ft[index];
             })
-            var zodiac = commonService.dictionaryByDictionaryTypeId(commonService.constant.dictionaryTypeIds.zodiac);
+            var zodiac = commonService.dictionaryByDictionaryTypeId('/numColor/getNumColorOnAnimals');
+            //var zodiac = {};
             if(zodiac.code === "0"){
                 window.zodiac = zodiac.data;
             }else{
                 window.zodiac = [];
             }
-            var color = commonService.dictionaryByDictionaryTypeId(commonService.constant.dictionaryTypeIds.color);
+            var color = commonService.dictionaryByDictionaryTypeId('/numColor/getNumColors');
+            //var color = {};
             if(color.code === "0"){
                 window.color = color.data;
             }else{

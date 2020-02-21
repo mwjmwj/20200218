@@ -190,7 +190,7 @@ define(
 							},
 							type:'line',
 							data:$scope.echartsData.map(item => {
-								return item.code;
+								return item.sCode;
 							})//[0, 1, 2, 5, 6, 9, 10, 21, 22, 23, 24, 28, 29, 32, 33, 46, 48, 49]
 						}
 					]
