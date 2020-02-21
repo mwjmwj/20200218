@@ -45,13 +45,13 @@ public class LotteryTask {
 
     public static SecureRandom sr = new SecureRandom();
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "0/10 0/5 * * * ?")
     public void startPeriod() {
         lotteryService.startPeriod();
     }
 
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "2/10 0/5 * * * ?")
     public void initPeriod() {
 
         // 获取未完成开奖的期
