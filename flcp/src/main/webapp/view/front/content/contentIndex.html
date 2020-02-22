@@ -144,15 +144,16 @@
                                             <div style="padding: 10px 0;">{{item.name}}</div>
                                         </td>
                                     </tr>
+                                </tbody></table>
+                                <div id="pagePic" style="padding: 0 10px;"></div>
+                            </td>
+                            <td id="dcyj_demo3" valign="top">
+                                <table cellpadding="2" cellspacing="0" border="0" class="tdd">
+                                    <tbody><tr align="center">
+
+                                    </tr>
                                     </tbody></table>
                             </td>
-                            <!--<td id="dcyj_demo3" valign="top">-->
-                                <!--<table cellpadding="2" cellspacing="0" border="0" class="tdd">-->
-                                    <!--<tbody><tr align="center">-->
-
-                                    <!--</tr>-->
-                                    <!--</tbody></table>-->
-                            <!--</td>-->
                         </tr>
                         </tbody></table>
                 </div>
@@ -196,6 +197,7 @@
             var jzlj_mar = setInterval(jzlj_jzlj_marquee,jzlj_speed);
             dcyj_demo.onmouseover = function() {clearInterval(jzlj_mar);}
             dcyj_demo.onmouseout = function() {jzlj_mar = setInterval(jzlj_jzlj_marquee,jzlj_speed);}
+            $("#dcyj_demo3").hide();
         </script>
         <div style="width: 750px;height: auto;border: #471797 solid 1px;background: #1b0b37;border-radius: 2px;margin-top: 10px;margin-left: 15px;">
             <div class="index-label-title">

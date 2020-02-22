@@ -1,14 +1,19 @@
 package com.cp.controller;
 
 
+import cn.hutool.core.util.NumberUtil;
 import com.cp.bean.*;
 import com.cp.dao.ForePicMapper;
 import com.cp.dao.IndexNoticeMapper;
 import com.cp.util.result.RSBuild;
 import com.cp.util.result.ResponseEntity;
+import com.cp.util.tools.CommonUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +21,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class BusinessController {
@@ -36,19 +42,25 @@ public class BusinessController {
      * @return
      */
     @RequestMapping("/forepic/list")
-    public Object listForePic() throws UnknownHostException {
+    public Object listForePic(@RequestBody Map<String,Object> map) throws UnknownHostException {
         ResponseEntity<List<ForePic>> responseEntity = RSBuild.ins().success();
-        List<ForePic> data = forePicMapper.indexPicList();
+        // 设置分页
+        PageHelper.startPage(NumberUtil.parseInt(String.valueOf(map.get("page"))),NumberUtil.parseInt(String.valueOf(map.get("pageSize"))));
+
+        List<ForePic> forePics = forePicMapper.indexPicList();
 
 
-        if(CollectionUtils.isEmpty(data)){
+        if(CollectionUtils.isEmpty(forePics)){
             return responseEntity;
         }
         InetAddress address = InetAddress.getLocalHost();
-        for (ForePic datum : data) {
+        for (ForePic datum : forePics) {
             datum.setUrl("http://"+address.getHostAddress()+":"+port+"/file/upload?filePath="+datum.getUrl());
         }
-        responseEntity.setData(data);
+        PageInfo<List<ForePic>> pageInfo = new PageInfo(forePics);
+        responseEntity.setPageInfo(CommonUtils.toPageObject(pageInfo));
+        List<ForePic> lotteries = CommonUtils.copyObjects(pageInfo.getList(), ForePic.class);
+        responseEntity.setData(forePics);
         return responseEntity;
     }
 
@@ -59,21 +71,25 @@ public class BusinessController {
      * return
      */
     @RequestMapping("/forepic/listdetail")
-    public Object listForePics() throws UnknownHostException {
+    public Object listForePics(@RequestBody Map<String,Object> map) throws UnknownHostException {
         ResponseEntity<List<ForePic>> responseEntity = RSBuild.ins().success();
         ForePicExample para = new  ForePicExample();
         para.setOrderByClause(" id desc ");
-        List<ForePic> data = forePicMapper.selectByExample(para);
+        // 设置分页
+        PageHelper.startPage(NumberUtil.parseInt(String.valueOf(map.get("page"))),NumberUtil.parseInt(String.valueOf(map.get("pageSize"))));
+        List<ForePic> forePics = forePicMapper.selectByExample(para);
 
-        if(CollectionUtils.isEmpty(data)){
+        if(CollectionUtils.isEmpty(forePics)){
             return responseEntity;
         }
         InetAddress address = InetAddress.getLocalHost();
-        for (ForePic datum : data) {
+        for (ForePic datum : forePics) {
             datum.setUrl("http://"+address.getHostAddress()+":"+port+"/file/upload?filePath="+datum.getUrl());
         }
-
-        responseEntity.setData(data);
+        PageInfo<List<ForePic>> pageInfo = new PageInfo(forePics);
+        responseEntity.setPageInfo(CommonUtils.toPageObject(pageInfo));
+        List<ForePic> lotteries = CommonUtils.copyObjects(pageInfo.getList(), ForePic.class);
+        responseEntity.setData(forePics);
         return responseEntity;
     }
 

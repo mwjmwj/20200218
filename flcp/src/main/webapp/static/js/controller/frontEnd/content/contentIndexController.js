@@ -125,7 +125,84 @@ define(
                 $scope.isInit = true;
                 let predictionPics = commonService.webName("/forepic/list")
                 $scope.showPicList = [];
-                $.ajax({
+
+
+                layui.use(['laypage', 'layer'], function(){
+                    var laypage = layui.laypage;
+                    var layer = layui.layer;
+                    $scope.refreshTable = (page,rows,params,flag) => {
+                        if(page!=$scope.tablePage||rows!=$scope.tableRows||flag){
+                            $scope.tablePage = page;
+                            $scope.tableRows = rows;
+                        }else{
+                            return $scope.tableData;
+                        }
+                        let tharParams = {
+                            page:page,
+                            pageSize:rows
+                        }
+                        for(pa in params){
+                            tharParams[pa] = params[pa];
+                        }
+                        $http.post(predictionPics,tharParams).then(data => {
+                            //data = data != null ? JSON.parse(data) : null;
+                            if(data&&data.data){
+                                data = data.data;
+                                if(data.code === "0"){
+                                    if(data.data){
+                                        $scope.showPicList = data.data;
+                                    }
+                                    laypage.render({
+                                        elem: 'pagePic',
+                                        curr:page,
+                                        count: data.pageInfo.total,
+                                        limit:rows,
+                                        //layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                                        layout: ['count', 'prev', 'page', 'next', 'skip'],
+                                        jump: function(obj){
+                                            $scope.refreshTable(obj.curr,obj.limit,$scope.tableParams);
+                                        }
+                                    });
+                                }else{
+                                    $scope.tableData = [];
+                                    laypage.render({
+                                        elem: 'pagePic',
+                                        curr:page,
+                                        count: 0,
+                                        limit:rows,
+                                        //layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                                        layout: ['count', 'prev', 'page', 'next', 'skip'],
+                                        jump: function(obj){
+                                            $scope.refreshTable(obj.curr,obj.limit,$scope.tableParams);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    $scope.chooseYear = new Date().getFullYear(); //获取默认年份
+                    $scope.chooseYearChange = function(value){
+                        if(value){
+                            $scope.chooseYear = value;
+                        }else{
+
+                        }
+                        $scope.tableParams = {
+                            lotteryDateBegin:$scope.chooseYear+"-01-01 00:00:00",
+                            lotteryDateEnd:$scope.chooseYear+"-12-31 23:59:59"
+                        }
+                        $scope.refreshEcharts();
+                        $scope.refreshTable(1,4,$scope.tableParams,true);
+                    }
+                    $scope.tableParams = {
+                        lotteryDateBegin:$scope.chooseYear+"-01-01 00:00:00",
+                        lotteryDateEnd:$scope.chooseYear+"-12-31 23:59:59"
+                    }
+                    $scope.refreshTable(1,4,$scope.tableParams);
+                });
+
+
+                /*$.ajax({
                     url:predictionPics,
                     type:'GET',
                     async:false,
@@ -139,7 +216,9 @@ define(
                     error:function(data){
                         layui.layer.msg("获取图片列表失败")
                     }
-                });
+                });*/
+
+
 
                 let getLotteryRecord = commonService.webName("/lottery/getNextLottery");
                 $scope.lotteryRecord = {numList:[],tm:''};

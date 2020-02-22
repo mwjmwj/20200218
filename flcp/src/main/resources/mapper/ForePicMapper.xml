@@ -257,6 +257,6 @@
 
   <select id="indexPicList" resultMap="BaseResultMap">
     select * from t_fore_pic
-    where 1=1 order by `NAME` desc limit 4
+    where 1=1 order by `NAME` desc
   </select>
 </mapper>
