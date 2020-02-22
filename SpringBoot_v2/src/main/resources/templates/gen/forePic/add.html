@@ -141,7 +141,7 @@ function add() {
 	// var dataFormJson=$("#form-add").serialize();
     var formdata=new FormData();
     formdata.append("file",$("#file").get(0).files[0]);
-    formdata.append("name",$("#file").val());
+    formdata.append("name",$("#name").val());
 
 	$.ajax({
 		type : "POST",
