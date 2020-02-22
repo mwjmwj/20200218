@@ -40,6 +40,9 @@ define(
                 when("/law",{
                     templateUrl: "view/front/content/static/law.html",
                 }).
+                when("/sssq",{
+                    templateUrl: "view/front/content/static/sssq.html",
+                }).
                 when("/privacyPolicy",{
                     templateUrl: "view/front/content/static/privacyPolicy.html",
                 }).

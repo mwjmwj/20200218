@@ -23,7 +23,8 @@ define(
                 {type:'bonusShares',name:'獎金分配'},
                 {type:'bettingMethod',name:'投註方式'},
                 {type:'boardOfDirectors',name:'公司董事'},
-                {type:'law',name:'法律依據'}
+                {type:'law',name:'法律依據'},
+                {type:'sssq',name:'试试手气'}
             ];
             window.onhashchange = function(){
                 $scope.chooseTag = getHashName().replace('/','');
