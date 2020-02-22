@@ -68,18 +68,20 @@ public class ForePicController extends BaseController {
     @PostMapping("add")
     @RequiresPermissions("gen:forePic:add")
     @ResponseBody
-    public AjaxResult add(ForePic forePic, HttpServletRequest request,@RequestParam("file") MultipartFile file1) throws IOException {
+    public AjaxResult add(ForePic forePic, HttpServletRequest request) throws IOException {
 
         MultipartHttpServletRequest mr = (MultipartHttpServletRequest) request;
 
         MultipartFile file = mr.getFile("file");
 
-        String fileName = UUID.randomUUID().toString().replaceAll("-","");
+        String fileName = UUID.randomUUID().toString().replaceAll("-", "").substring(0,10);
 
-        file.transferTo(new File(path+fileName+file.getOriginalFilename()));
+        String originFileName = file.getOriginalFilename();
+        file.transferTo(new File(path + fileName + originFileName));
 
-        forePic.setTail(file.getName());
-        forePic.setUrl(fileName);
+        forePic.setTail(originFileName);
+        forePic.setUrl(fileName + originFileName);
+        forePic.setName(request.getParameter("name")+"期");
 
         int b = forePicService.insertSelective(forePic);
         if (b > 0) {
@@ -100,6 +102,7 @@ public class ForePicController extends BaseController {
     @RequiresPermissions("gen:forePic:remove")
     @ResponseBody
     public AjaxResult remove(String ids) {
+
         int b = forePicService.deleteByPrimaryKey(ids);
         if (b > 0) {
             return success();

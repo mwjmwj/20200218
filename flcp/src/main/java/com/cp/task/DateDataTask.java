@@ -31,7 +31,7 @@ public class DateDataTask {
     private LotteryMapper lotteryMapper;
 
 
-    @Scheduled(cron = "0/10 0/5 * * * ?")
+    @Scheduled(cron = "1 10 * * * ?")
     public void initDate() throws Exception {
         List<YearNum> needProcess = yearNumMapper.listAll();
 
