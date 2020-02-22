@@ -8,7 +8,6 @@ define(
                 $scope.showText = "";
                 $scope.chineseList = [];
                 console.log(window.color);
-                debugger;
                 for(let i in window.chineseList){
                     let zodiacNum = [];
                     for(let j in window.zodiac){
