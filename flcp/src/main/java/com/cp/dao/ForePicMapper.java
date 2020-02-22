@@ -24,7 +24,9 @@ public interface ForePicMapper {
     int insertSelective(ForePic record);
 
     List<ForePic> selectByExample(ForePicExample example);
-		
+
+    List<ForePic> indexPicList();
+
     ForePic selectByPrimaryKey(Long id);
 		
     int updateByExampleSelective(@Param("record") ForePic record, @Param("example") ForePicExample example);

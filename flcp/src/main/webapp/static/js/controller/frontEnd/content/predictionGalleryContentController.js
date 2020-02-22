@@ -5,7 +5,7 @@ define(
 
 			$scope.init = () => {
 				$scope.isInit = true;
-				let predictionPics = commonService.webName("/lotteryRecord/predictionPic")
+				let predictionPics = commonService.webName("/forepic/listdetail")
 				$scope.showList = [];
 				$.ajax({
 					url:predictionPics,
@@ -14,12 +14,9 @@ define(
 					dataType:'json',
 					contentType:'application/json;charset=UTF-8',
 					success : function(data) {
-						if(data&&data.data&&data.data){
-							$scope.showList = [data.data].map(picList => {
-								picList.lotteryDate = new Date(picList.lotteryDate);
-								return picList;
-							});
-						}
+                        if(data&&data.code === '0'&&data.data){
+                            $scope.showList = data.data;
+                        }
 					},
 					error:function(data){
 						layui.layer.msg("获取图片列表失败")

@@ -253,4 +253,10 @@
       tail = #{tail,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="indexPicList" resultMap="BaseResultMap">
+    select * from t_fore_pic
+    where 1=1 order by id desc limit 4
+  </select>
 </mapper>

@@ -123,7 +123,7 @@ define(
             //初始化方法
             $scope.init = function(){
                 $scope.isInit = true;
-                let predictionPics = commonService.webName("/lotteryRecord/predictionPic")
+                let predictionPics = commonService.webName("/forepic/list")
                 $scope.showPicList = [];
                 $.ajax({
                     url:predictionPics,
@@ -132,14 +132,15 @@ define(
                     dataType:'json',
                     contentType:'application/json;charset=UTF-8',
                     success : function(data) {
-                        if(data&&data.data&&data.data&&data.data.pictures){
-                            $scope.showPicList = data.data.pictures;
+                        if(data&&data.code === '0'&&data.data){
+                            $scope.showPicList = data.data;
                         }
                     },
                     error:function(data){
                         layui.layer.msg("获取图片列表失败")
                     }
                 });
+
                 let getLotteryRecord = commonService.webName("/lottery/getNextLottery");
                 $scope.lotteryRecord = {numList:[],tm:''};
                 $.ajax({
@@ -185,6 +186,32 @@ define(
                         layui.layer.msg("获取数据失败")
                     }
                 });
+
+
+                // 首页信息
+                let noticeDetailUrl = commonService.webName("/notice/list");
+                $scope.noticeDetail = {};
+                $.ajax({
+                    url:noticeDetailUrl,
+                    type:'GET',
+                    async:false,
+                    dataType:'json',
+                    contentType:'application/json;charset=UTF-8',
+                    success : function(data) {
+                        if(data&&data.code === '0'&&data.data){
+                            $scope.noticeDetail = data.data;
+                        }
+                    },
+                    error:function(data){
+                        layui.layer.msg("获取图片列表失败")
+                    }
+                });
+
+
+
+
+
+
             }
 
             if(!$scope.isInit){
