@@ -99,3 +99,7 @@ spring:
 #      wall:
 #        config:
 #          multi-statement-allow: true
+
+# 图片的上传初始位置
+pic:
+  C:/A_MAO/futureimg/

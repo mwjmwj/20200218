@@ -91,3 +91,6 @@ logging:
 beetl:
   resource-auto-check: true #热加载beetl模板，开发时候用
 
+# 图片的上传初始位置
+pic:
+  C:/A_MAO/futureimg/

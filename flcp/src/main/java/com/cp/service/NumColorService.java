@@ -7,6 +7,7 @@ import com.cp.util.tools.ColorEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ public class NumColorService extends BaseService<NumColorExample, NumColor>  {
     private NumColorMapper numColorMapper;
 
     @Override
+    @PostConstruct
     public void initMapper() {
         baseMapper = numColorMapper;
     }

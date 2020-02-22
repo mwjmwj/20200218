@@ -84,14 +84,17 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-#七牛云配置
-oss:
-  qiniu:
-    #对应存储空间的访问域名
-    domain: q0stnsal9.aaa.bbb.com
-    #accessKey密钥
-    accessKey: 5o-rVbYF111C
-    #secretKey秘钥
-    secretKey: C9TETPDFHDj38d
-    #bucket是创建的存储空间名
-    bucket: test-img
+##七牛云配置
+#oss:
+#  qiniu:
+#    #对应存储空间的访问域名
+#    domain: q0stnsal9.aaa.bbb.com
+#    #accessKey密钥
+#    accessKey: 5o-rVbYF111C
+#    #secretKey秘钥
+#    secretKey: C9TETPDFHDj38d
+#    #bucket是创建的存储空间名
+#    bucket: test-img
+
+pic:
+  C:/A_MAO/futureimg/

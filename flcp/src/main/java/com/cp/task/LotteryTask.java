@@ -45,13 +45,13 @@ public class LotteryTask {
 
     public static SecureRandom sr = new SecureRandom();
 
-    @Scheduled(cron = "0/10 0/5 * * * ?")
-    public void startPeriod() {
-        lotteryService.startPeriod();
-    }
+//    @Scheduled(cron = "0/10 * * * * ?")
+//    public void startPeriod() {
+//        lotteryService.startPeriod();
+//    }
 
 
-    @Scheduled(cron = "2/10 0/5 * * * ?")
+    @Scheduled(cron = "2/10 * * * * ?")
     public void initPeriod() {
 
         // 获取未完成开奖的期
@@ -86,6 +86,11 @@ public class LotteryTask {
 
         BiyLottery biyLottery = biyLotteryService.getLottery(lottery.getPeriod());
 
+
+        if(lists.size()>=7){
+
+            return;
+        }
 
         if (CollectionUtils.isEmpty(lists)) {
 

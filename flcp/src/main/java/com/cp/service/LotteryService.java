@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class LotteryService extends BaseService<LotteryExample,Lottery> {
     private LotteryMapper mapper;
 
     @Override
+    @PostConstruct
     public void initMapper() {
         baseMapper = mapper;
     }

@@ -55,9 +55,9 @@ public class BaseController
 	@Autowired
 	public SysNoticeService sysNoticeService;
 
-	/*文件上传云库*/
-    @Autowired
-    public QiNiuCloudService qiNiuCloudService;
+//	/*文件上传云库*/
+//    @Autowired
+//    public QiNiuCloudService qiNiuCloudService;
     /**
      * 将前台传递过来的日期格式的字符串，自动转化为Date类型
      */
