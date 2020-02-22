@@ -323,7 +323,7 @@ function stopanimate() {
     bgSound.pause();
     numSound.pause();
     numSound = document.getElementById("numSound");
-    $(".number>ul").html(originalHtml);
+    //$(".number>ul").html(originalHtml);
 }
 //判断数字音频
 function panduSound(i, n, length) { // i 第几个号码   n 开出的号码
@@ -426,8 +426,50 @@ var typeSix, typeten, typetwo, nextopent
 //var httpurl="http://192.168.1.140/six-api/smallSix/testCurrentVideoInfo.do?"   // 140
 //var httpurl="http://1680660.com/smallSix/findCurrentVideoInfo.do?"   // 线上
 var errcount = 0;
-
+loadAjax();
 function loadAjax() {
+    //;	if(souqi == true){setTimeout(function(){loadAjax()},1000);return;}
+    $.ajax({
+        type: "get",
+        url:"/lottery/getNextLottery?rannum="+Math.ceil(Math.random()*1000000+1000),
+        //url: "//1680660.com/smallSix/findCurrentVideoInfo.do?",
+//      url: "//192.168.1.108:8080/six-api/smallSix/findCurrentVideoInfo.do?",
+//      url:"http://192.168.1.140/six-api/smallSix/findCurrentVideoInfo.do",
+        async: true,
+        dataType: "json",
+        success: function(obj) {
+            var data = obj.data;
+            console.log(data);
+            let timeAfterOpen = data.find(item => {
+                return item.endFlag == '1';
+            });
+            var kaijiArr = [];
+            timeAfterOpen.lotteryRecordDetails.find(item => {
+                kaijiArr.push(item.num);
+            });
+            addloadhtml(kaijiArr);
+            let timeNextOpen = data.find(item => {
+                return item.endFlag == '-1';
+            });
+            nextopent = timeNextOpen.beginTm;
+            dateAndissue(timeNextOpen) ////填充下期开奖时间与开奖期号
+            nextopenTime(timeNextOpen.beginTm) // 底部栏的倒计时
+        },
+        error: function(data) {
+            console.log("error+++++++" + data)
+            if(errcount <= 500) {
+                setTimeout(function(){
+                    loadAjax();
+                },1000)
+            }
+            errcount++
+
+        }
+    });
+}
+
+//以前的请求.
+function loadAjax_old () {
     ;	if(souqi == true){setTimeout(function(){loadAjax()},1000);return;}
     $.ajax({
         type: "get",
@@ -519,6 +561,7 @@ function loadAjax() {
         }
     });
 }
+
 var In = "";
 //开奖时正在搅珠
 function kaijiIn(maArr) {
@@ -546,8 +589,24 @@ function kaijiIn(maArr) {
     }
 }
 //解释请求到的数据加载到 DOM
-function addloadhtml(data) {
-    console.log(data)
+function addloadhtml(kaijiArr) {
+    var ber = "",
+        html = "";
+    $.each(kaijiArr, function(c, l) {
+        ber = l > 9 ? l : "0" + l
+        if(c != 6) {
+            html += "<li class='" + BooColor[l] + "'>" + ber + "</li>"
+        } else {
+            html += "<li class='" + BooColor[l] + " lastLi'>" + ber + "</li>"
+        }
+    });
+    $(".number>ul").html(html);
+    originalHtml = html;
+
+}
+
+//解释请求到的数据加载到 DOM
+function addloadhtml_old(data) {
     var ma = data.ma.split(",");
     //alert(ma);
     var kaijiArr = [];
@@ -569,10 +628,11 @@ function addloadhtml(data) {
 
 }
 ////填充下期开奖时间与开奖期号
-function dateAndissue(data) {
+function dateAndissue(obj) {
 //  var nextdate = data.nextdate.slice(0, 10).replace("/", '年').replace("/", "月") + "号";
-    $("#data_b").text(data.year+"年"+data.day);
-    $("#issue_b").text(data.id)
+    var d = new Date(obj.endTm);
+    $("#data_b").text(d.getFullYear()+"年"+(d.getMonth()+1)+"月" + d.getDate()+"日");
+    $("#issue_b").text(obj.period)
 
 }
 var nexttimeinter;
@@ -581,7 +641,8 @@ kji = 1;
 function nextopenTime(nextTime) {
     console.log(new Date(nextTime))
     nexttimeinter = setInterval(function() {
-        var time = new Date(nextTime.replace(/-/g,'/')).getTime() - new Date().getTime()
+        //var time = new Date(nextTime.replace(/-/g,'/')).getTime() - new Date().getTime()
+        var time = new Date(nextTime).getTime() - new Date().getTime()
         var day = parseInt(time / (1000 * 60 * 60) / 24)
         var hours = parseInt(time / (1000 * 60 * 60) - (day * 24));
         var fen = parseInt((time / (1000 * 60 * 60) - (day * 24) - hours) * 60)

@@ -170,7 +170,7 @@ define(
                                 $scope.timeAfterPeriod = timeAfterOpen?timeAfterOpen.period:"";
                                 $scope.timeNextPeriod = timeNextOpen?timeNextOpen.period:"";
                                 $scope.timeAfterOpen = timeAfterOpen?timeAfterOpen.endTm:"";
-                                $scope.timeNextOpen = timeNextOpen?timeNextOpen.endTm:"";
+                                $scope.timeNextOpen = timeNextOpen?timeNextOpen.beginTm:"";
                                 $scope.timeAfterOpen = timeAfterOpen?timeAfterOpen.endTm:"";
                                 $scope.timeAfterOpen = new Date($scope.timeAfterOpen);
                                 $scope.timeNowOpen = new Date();
