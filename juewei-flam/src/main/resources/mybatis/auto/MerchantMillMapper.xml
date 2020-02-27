@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.test.mapper.auto.MerchantMillMapper">
+  <resultMap id="BaseResultMap" type="com.fc.test.model.auto.MerchantMill">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="tel_phone" jdbcType="VARCHAR" property="telPhone" />
+    <result column="bis_qua_pic" jdbcType="VARCHAR" property="bisQuaPic" />
+    <result column="remark_pic" jdbcType="VARCHAR" property="remarkPic" />
+    <result column="back_pic" jdbcType="VARCHAR" property="backPic" />
+    <result column="head_pic" jdbcType="VARCHAR" property="headPic" />
+    <result column="t_tm" jdbcType="TIMESTAMP" property="tTm" />
+    <result column="u_tm" jdbcType="TIMESTAMP" property="uTm" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+<sql id="Base_Column_List">
+	  	  	      	id,
+       	  	      	name,
+       	  	      	type,
+       	  	      	remark,
+       	  	      	address,
+       	  	      	tel_phone,
+       	  	      	bis_qua_pic,
+       	  	      	remark_pic,
+       	  	      	back_pic,
+       	  	      	head_pic,
+       	  	      	t_tm,
+       	  	    	  	u_tm
+       	</sql>
+  <select id="selectByExample" parameterType="com.fc.test.model.auto.MerchantMillExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_merchant_mill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_merchant_mill
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_merchant_mill
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fc.test.model.auto.MerchantMillExample">
+    delete from t_merchant_mill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.fc.test.model.auto.MerchantMill">
+    insert into t_merchant_mill (
+      	  	       id,
+       	  	       name,
+       	  	       type,
+       	  	       remark,
+       	  	       address,
+       	  	       tel_phone,
+       	  	       bis_qua_pic,
+       	  	       remark_pic,
+       	  	       back_pic,
+       	  	       head_pic,
+       	  	       t_tm,
+       	  	    	  u_tm
+       	    )
+    values (
+	  	  	      	#{id,jdbcType=BIGINT},
+       	  	      	#{name,jdbcType=VARCHAR},
+       	  	      	#{type,jdbcType=VARCHAR},
+       	  	      	#{remark,jdbcType=VARCHAR},
+       	  	      	#{address,jdbcType=VARCHAR},
+       	  	      	#{telPhone,jdbcType=VARCHAR},
+       	  	      	#{bisQuaPic,jdbcType=VARCHAR},
+       	  	      	#{remarkPic,jdbcType=VARCHAR},
+       	  	      	#{backPic,jdbcType=VARCHAR},
+       	  	      	#{headPic,jdbcType=VARCHAR},
+       	  	      	#{tTm,jdbcType=TIMESTAMP},
+       	  	    	  #{uTm,jdbcType=TIMESTAMP}
+       	    )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.fc.test.model.auto.MerchantMill">
+    insert into t_merchant_mill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="id != null">
+        id,
+      </if>
+      
+         
+      <if test="name != null">
+        name,
+      </if>
+      
+         
+      <if test="type != null">
+        type,
+      </if>
+      
+         
+      <if test="remark != null">
+        remark,
+      </if>
+      
+         
+      <if test="address != null">
+        address,
+      </if>
+      
+         
+      <if test="telPhone != null">
+        tel_phone,
+      </if>
+      
+         
+      <if test="bisQuaPic != null">
+        bis_qua_pic,
+      </if>
+      
+         
+      <if test="remarkPic != null">
+        remark_pic,
+      </if>
+      
+         
+      <if test="backPic != null">
+        back_pic,
+      </if>
+      
+         
+      <if test="headPic != null">
+        head_pic,
+      </if>
+      
+         
+      <if test="tTm != null">
+        t_tm,
+      </if>
+      
+         
+      <if test="uTm != null">
+        u_tm,
+      </if>
+      
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+          <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+          <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+          <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+          <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+          <if test="telPhone != null">
+        #{telPhone,jdbcType=VARCHAR},
+      </if>
+          <if test="bisQuaPic != null">
+        #{bisQuaPic,jdbcType=VARCHAR},
+      </if>
+          <if test="remarkPic != null">
+        #{remarkPic,jdbcType=VARCHAR},
+      </if>
+          <if test="backPic != null">
+        #{backPic,jdbcType=VARCHAR},
+      </if>
+          <if test="headPic != null">
+        #{headPic,jdbcType=VARCHAR},
+      </if>
+          <if test="tTm != null">
+        #{tTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="uTm != null">
+        #{uTm,jdbcType=TIMESTAMP},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.fc.test.model.auto.MerchantMillExample" resultType="java.lang.Long">
+    select count(*) from t_merchant_mill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_merchant_mill
+    <set>
+          <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+          <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+          <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+          <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+          <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+          <if test="record.telPhone != null">
+        tel_phone = #{record.telPhone,jdbcType=VARCHAR},
+      </if>
+          <if test="record.bisQuaPic != null">
+        bis_qua_pic = #{record.bisQuaPic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.remarkPic != null">
+        remark_pic = #{record.remarkPic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.backPic != null">
+        back_pic = #{record.backPic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.headPic != null">
+        head_pic = #{record.headPic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.tTm != null">
+        t_tm = #{record.tTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.uTm != null">
+        u_tm = #{record.uTm,jdbcType=TIMESTAMP},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update t_merchant_mill
+    set
+            	     	 id = #{record.id,jdbcType=BIGINT},
+    	         	     	 name = #{record.name,jdbcType=VARCHAR},
+    	         	     	 type = #{record.type,jdbcType=VARCHAR},
+    	         	     	 remark = #{record.remark,jdbcType=VARCHAR},
+    	         	     	 address = #{record.address,jdbcType=VARCHAR},
+    	         	     	 tel_phone = #{record.telPhone,jdbcType=VARCHAR},
+    	         	     	 bis_qua_pic = #{record.bisQuaPic,jdbcType=VARCHAR},
+    	         	     	 remark_pic = #{record.remarkPic,jdbcType=VARCHAR},
+    	         	     	 back_pic = #{record.backPic,jdbcType=VARCHAR},
+    	         	     	 head_pic = #{record.headPic,jdbcType=VARCHAR},
+    	         	     	 t_tm = #{record.tTm,jdbcType=TIMESTAMP},
+    	         	     	 u_tm = #{record.uTm,jdbcType=TIMESTAMP}
+    	         <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.test.model.auto.MerchantMill">
+    update t_merchant_mill
+    <set>
+                          <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+                      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+                      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+                      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+                      <if test="telPhone != null">
+        tel_phone = #{telPhone,jdbcType=VARCHAR},
+      </if>
+                      <if test="bisQuaPic != null">
+        bis_qua_pic = #{bisQuaPic,jdbcType=VARCHAR},
+      </if>
+                      <if test="remarkPic != null">
+        remark_pic = #{remarkPic,jdbcType=VARCHAR},
+      </if>
+                      <if test="backPic != null">
+        back_pic = #{backPic,jdbcType=VARCHAR},
+      </if>
+                      <if test="headPic != null">
+        head_pic = #{headPic,jdbcType=VARCHAR},
+      </if>
+                      <if test="tTm != null">
+        t_tm = #{tTm,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="uTm != null">
+        u_tm = #{uTm,jdbcType=TIMESTAMP},
+      </if>
+              </set>
+    where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                  
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.fc.test.model.auto.MerchantMill">
+    update t_merchant_mill
+    set 
+             	        	    	 			name = #{name,jdbcType=VARCHAR},
+		     	        	    	 			type = #{type,jdbcType=VARCHAR},
+		     	        	    	 			remark = #{remark,jdbcType=VARCHAR},
+		     	        	    	 			address = #{address,jdbcType=VARCHAR},
+		     	        	    	 			tel_phone = #{telPhone,jdbcType=VARCHAR},
+		     	        	    	 			bis_qua_pic = #{bisQuaPic,jdbcType=VARCHAR},
+		     	        	    	 			remark_pic = #{remarkPic,jdbcType=VARCHAR},
+		     	        	    	 			back_pic = #{backPic,jdbcType=VARCHAR},
+		     	        	    	 			head_pic = #{headPic,jdbcType=VARCHAR},
+		     	        	    	 			t_tm = #{tTm,jdbcType=TIMESTAMP},
+		     	        	    	 			u_tm = #{uTm,jdbcType=TIMESTAMP}
+		     	        where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                    
+  </update>
+  
+                                                                
+</mapper>

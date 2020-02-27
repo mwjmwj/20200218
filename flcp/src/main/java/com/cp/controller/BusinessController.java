@@ -37,30 +37,26 @@ public class BusinessController {
     @Value("${server.port}")
     public String port;
 
+    @Value("${pic_ip}")
+    public String pic_ip;
+
     /**
      *  首页图片数据 显示最新的4条
      * @return
      */
     @RequestMapping("/forepic/list")
-    public Object listForePic(@RequestBody Map<String,Object> map) throws UnknownHostException {
+    public Object listForePic() throws UnknownHostException {
         ResponseEntity<List<ForePic>> responseEntity = RSBuild.ins().success();
-        // 设置分页
-        PageHelper.startPage(NumberUtil.parseInt(String.valueOf(map.get("page"))),NumberUtil.parseInt(String.valueOf(map.get("pageSize"))));
+        List<ForePic> data = forePicMapper.indexPicList();
 
-        List<ForePic> forePics = forePicMapper.indexPicList();
-
-
-        if(CollectionUtils.isEmpty(forePics)){
+        if(CollectionUtils.isEmpty(data)){
             return responseEntity;
         }
         InetAddress address = InetAddress.getLocalHost();
-        for (ForePic datum : forePics) {
-            datum.setUrl("http://"+address.getHostAddress()+":"+port+"/file/upload?filePath="+datum.getUrl());
+        for (ForePic datum : data) {
+            datum.setUrl("http://"+pic_ip+":"+port+"/file/upload?filePath="+datum.getUrl());
         }
-        PageInfo<List<ForePic>> pageInfo = new PageInfo(forePics);
-        responseEntity.setPageInfo(CommonUtils.toPageObject(pageInfo));
-        List<ForePic> lotteries = CommonUtils.copyObjects(pageInfo.getList(), ForePic.class);
-        responseEntity.setData(forePics);
+        responseEntity.setData(data);
         return responseEntity;
     }
 
@@ -74,7 +70,7 @@ public class BusinessController {
     public Object listForePics(@RequestBody Map<String,Object> map) throws UnknownHostException {
         ResponseEntity<List<ForePic>> responseEntity = RSBuild.ins().success();
         ForePicExample para = new  ForePicExample();
-        para.setOrderByClause(" id desc ");
+        para.setOrderByClause(" `name` desc ");
         // 设置分页
         PageHelper.startPage(NumberUtil.parseInt(String.valueOf(map.get("page"))),NumberUtil.parseInt(String.valueOf(map.get("pageSize"))));
         List<ForePic> forePics = forePicMapper.selectByExample(para);
@@ -84,7 +80,7 @@ public class BusinessController {
         }
         InetAddress address = InetAddress.getLocalHost();
         for (ForePic datum : forePics) {
-            datum.setUrl("http://"+address.getHostAddress()+":"+port+"/file/upload?filePath="+datum.getUrl());
+            datum.setUrl("http://"+pic_ip+":"+port+"/file/upload?filePath="+datum.getUrl());
         }
         PageInfo<List<ForePic>> pageInfo = new PageInfo(forePics);
         responseEntity.setPageInfo(CommonUtils.toPageObject(pageInfo));

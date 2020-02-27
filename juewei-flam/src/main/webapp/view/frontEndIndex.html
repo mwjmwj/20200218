@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="#"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<title>某某某</title>-->
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/headerfooter.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/newhyc.css">
+    <link rel="stylesheet" type="text/css" href="css/sssq_index.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-3.3.7.css">
+    <link rel="stylesheet" type="text/css" href="js/lib/layui/css/layui.css">
+    <script data-main="js/controller/frontEnd/requireMain" src="js/lib/require.js"></script>
+</head>
+<body ng-controller="frontController" style="display:none;">
+    <div ng-include="'view/front/common/header.html'"></div>
+    <div class="content">
+        <ng-view></ng-view>
+    </div>
+    <div ng-include="'view/front/common/footer.html'"></div>
+</body>
+</html>
+

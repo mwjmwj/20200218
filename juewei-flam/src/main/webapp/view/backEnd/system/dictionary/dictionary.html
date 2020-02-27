@@ -1,0 +1,141 @@
+<div ng-controller="dictionaryController">
+    <div style="float: left;width: 20%;">
+        <table id="dictionaryTypeTable" lay-filter="dictionaryTypeListFilter"></table>
+    </div>
+
+    <div id="dictionaryList" style="float: right;width: 79%;">
+        <table id="dictionaryTable" lay-filter="dictionaryListFilter"></table>
+    </div>
+
+    <div id="dictionaryTypeAddPage" ng-show="dictionaryTypeAddPageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="dictionaryType.name" type="text" name="name" required lay-verify="required" placeholder="请输入字典类型名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <textarea ng-model="dictionaryType.desc" name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 159px;height: 100px;resize: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.dictionaryTypeAdd()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dictionaryTypeUpdatePage" ng-show="dictionaryTypeUpdatePageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="dictionaryType.name" type="text" name="name" required lay-verify="required" placeholder="请输入字典类型名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <textarea ng-model="dictionaryType.desc" name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 159px;height: 100px;resize: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item" ng-click="config.dictionaryTypeUpdate()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dictionaryAddPage" ng-show="dictionaryAddPageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="dictionary.name" type="text" name="name" required lay-verify="required" placeholder="请输入字典名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">字典值</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="dictionary.value" type="text" name="value" required lay-verify="required" placeholder="请输入字典值" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <textarea ng-model="dictionary.desc" name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 159px;height: 100px;resize: none;"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item" ng-click="config.dictionaryAdd()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dictionaryUpdatePage" ng-show="dictionaryUpdatePageFlag">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="dictionary.name" type="text" name="name" required lay-verify="required" placeholder="请输入字典名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">字典值</label>
+                    <div class="layui-input-inline">
+                        <input ng-model="dictionary.value" type="text" name="value" required lay-verify="required" placeholder="请输入字典值" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-block">
+                        <select lay-verify="required" ng-model="dictionary.dictionaryTypeId" ng-options="dictionaryType.id as dictionaryType.name for dictionaryType in dictionaryTypes"></select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <textarea ng-model="dictionary.desc" name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 159px;height: 100px;resize: none;"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item" ng-click="config.dictionaryUpdate()">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tableTools">
+    <div class="layui-inline" title="新增" lay-event="add"><i class="layui-icon layui-icon-add-circle"></i></div>
+    <div class="layui-inline" title="删除" lay-event="delete"><i class="layui-icon layui-icon-delete"></i></div>
+    <div class="layui-inline" title="编辑" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></div>
+</script>

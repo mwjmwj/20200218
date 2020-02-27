@@ -1,0 +1,50 @@
+<div ng-controller="headerController" style="min-width: 1400px;">
+    <nav class="" style="background: #000;">
+        <div class="n_c_01">
+            <div class="n_c_011">
+                <div class="n_c_011_r">
+                    <ul>
+                        <li class="pop_backhome" ng-repeat="item in tagList" style="display:flex">
+                            <a ng-show="item.flag" href="#{{item.flag}}" target="_self">{{item.name}}</a>
+                            <a ng-show="!item.flag" ng-click="item.click($event)">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="logoimg" style="text-shadow: 6px -2px 4px #c29cff;font-family: 楷体 !important;font-size: 80px;">
+        <img style="margin-top: -12px;" src="static/img/tblogos.png" />
+        澳門葡合彩
+    </div>
+    <div class="homeNav">
+        <div class="containerHome" style="min-height: 40px;background: #0000;">
+            <ul class="sydh01">
+                <li ng-repeat="item in menuList" ng-class="chooseTag===item.type?'hk dq':'hk'" ng-click="menuClick(item)">
+                    <a rel="external" href="#/{{item.type}}" ng-click="clickMenu(item.type)" class="ui-link">{{item.name}}</a>
+                    <ul class="hkheader">
+                        <li ng-repeat="items in item.children" ng-class="chooseTag===items.type?'dq':''" ng-click="menuClick(items)">
+                            <a rel="external" href="#/{{items.type}}" ng-click="clickMenu(items.type)" class="ui-link">{{items.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- <li class="dq sye">首页</li>
+                <li>
+                    <a rel="external" href="/djgz/" class="ui-link">党建工作</a>
+                </li>
+                <li>
+                    <a rel="external" href="/xwzx/" class="ui-link">新闻资讯</a>
+                </li>
+                <li>
+                    <a rel="external" href="/kjxx/" class="ui-link">阳光开奖</a>
+                </li>
+                <li>
+                    <a rel="external" href="/fcgy/" class="ui-link">福彩公益</a>
+                </li>
+                <li>
+                    <a rel="external" href="/shzr/" class="ui-link">社会责任 </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</div>

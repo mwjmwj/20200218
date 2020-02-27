@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.test.mapper.auto.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.fc.test.model.auto.Order">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="wechat_id" jdbcType="VARCHAR" property="wechatId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="wechat_order_no" jdbcType="VARCHAR" property="wechatOrderNo" />
+    <result column="o_status" jdbcType="INTEGER" property="oStatus" />
+    <result column="wechat_name" jdbcType="VARCHAR" property="wechatName" />
+    <result column="place_order_tm" jdbcType="TIMESTAMP" property="placeOrderTm" />
+    <result column="expect_s_tm" jdbcType="TIMESTAMP" property="expectSTm" />
+    <result column="s_tm" jdbcType="TIMESTAMP" property="sTm" />
+    <result column="over_tm" jdbcType="TIMESTAMP" property="overTm" />
+    <result column="tm_flag" jdbcType="INTEGER" property="tmFlag" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="c_tm" jdbcType="TIMESTAMP" property="cTm" />
+    <result column="u_tm" jdbcType="TIMESTAMP" property="uTm" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+<sql id="Base_Column_List">
+	  	  	      	id,
+       	  	      	amount,
+       	  	      	wechat_id,
+       	  	      	order_no,
+       	  	      	wechat_order_no,
+       	  	      	o_status,
+       	  	      	wechat_name,
+       	  	      	place_order_tm,
+       	  	      	expect_s_tm,
+       	  	      	s_tm,
+       	  	      	over_tm,
+       	  	      	tm_flag,
+       	  	      	remarks,
+       	  	      	c_tm,
+       	  	    	  	u_tm
+       	</sql>
+  <select id="selectByExample" parameterType="com.fc.test.model.auto.OrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fc.test.model.auto.OrderExample">
+    delete from t_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.fc.test.model.auto.Order">
+    insert into t_order (
+      	  	       id,
+       	  	       amount,
+       	  	       wechat_id,
+       	  	       order_no,
+       	  	       wechat_order_no,
+       	  	       o_status,
+       	  	       wechat_name,
+       	  	       place_order_tm,
+       	  	       expect_s_tm,
+       	  	       s_tm,
+       	  	       over_tm,
+       	  	       tm_flag,
+       	  	       remarks,
+       	  	       c_tm,
+       	  	    	  u_tm
+       	    )
+    values (
+	  	  	      	#{id,jdbcType=BIGINT},
+       	  	      	#{amount,jdbcType=DECIMAL},
+       	  	      	#{wechatId,jdbcType=VARCHAR},
+       	  	      	#{orderNo,jdbcType=VARCHAR},
+       	  	      	#{wechatOrderNo,jdbcType=VARCHAR},
+       	  	      	#{oStatus,jdbcType=INTEGER},
+       	  	      	#{wechatName,jdbcType=VARCHAR},
+       	  	      	#{placeOrderTm,jdbcType=TIMESTAMP},
+       	  	      	#{expectSTm,jdbcType=TIMESTAMP},
+       	  	      	#{sTm,jdbcType=TIMESTAMP},
+       	  	      	#{overTm,jdbcType=TIMESTAMP},
+       	  	      	#{tmFlag,jdbcType=INTEGER},
+       	  	      	#{remarks,jdbcType=VARCHAR},
+       	  	      	#{cTm,jdbcType=TIMESTAMP},
+       	  	    	  #{uTm,jdbcType=TIMESTAMP}
+       	    )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.fc.test.model.auto.Order" keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="id != null">
+        id,
+      </if>
+      
+         
+      <if test="amount != null">
+        amount,
+      </if>
+      
+         
+      <if test="wechatId != null">
+        wechat_id,
+      </if>
+      
+         
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      
+         
+      <if test="wechatOrderNo != null">
+        wechat_order_no,
+      </if>
+      
+         
+      <if test="oStatus != null">
+        o_status,
+      </if>
+      
+         
+      <if test="wechatName != null">
+        wechat_name,
+      </if>
+      
+         
+      <if test="placeOrderTm != null">
+        place_order_tm,
+      </if>
+      
+         
+      <if test="expectSTm != null">
+        expect_s_tm,
+      </if>
+      
+         
+      <if test="sTm != null">
+        s_tm,
+      </if>
+      
+         
+      <if test="overTm != null">
+        over_tm,
+      </if>
+      
+         
+      <if test="tmFlag != null">
+        tm_flag,
+      </if>
+      
+         
+      <if test="remarks != null">
+        remarks,
+      </if>
+      
+         
+      <if test="cTm != null">
+        c_tm,
+      </if>
+      
+         
+      <if test="uTm != null">
+        u_tm,
+      </if>
+      
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+          <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+          <if test="wechatId != null">
+        #{wechatId,jdbcType=VARCHAR},
+      </if>
+          <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+          <if test="wechatOrderNo != null">
+        #{wechatOrderNo,jdbcType=VARCHAR},
+      </if>
+          <if test="oStatus != null">
+        #{oStatus,jdbcType=INTEGER},
+      </if>
+          <if test="wechatName != null">
+        #{wechatName,jdbcType=VARCHAR},
+      </if>
+          <if test="placeOrderTm != null">
+        #{placeOrderTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="expectSTm != null">
+        #{expectSTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="sTm != null">
+        #{sTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="overTm != null">
+        #{overTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="tmFlag != null">
+        #{tmFlag,jdbcType=INTEGER},
+      </if>
+          <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+          <if test="cTm != null">
+        #{cTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="uTm != null">
+        #{uTm,jdbcType=TIMESTAMP},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.fc.test.model.auto.OrderExample" resultType="java.lang.Long">
+    select count(*) from t_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_order
+    <set>
+          <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+          <if test="record.amount != null">
+        amount = #{record.amount,jdbcType=DECIMAL},
+      </if>
+          <if test="record.wechatId != null">
+        wechat_id = #{record.wechatId,jdbcType=VARCHAR},
+      </if>
+          <if test="record.orderNo != null">
+        order_no = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+          <if test="record.wechatOrderNo != null">
+        wechat_order_no = #{record.wechatOrderNo,jdbcType=VARCHAR},
+      </if>
+          <if test="record.oStatus != null">
+        o_status = #{record.oStatus,jdbcType=INTEGER},
+      </if>
+          <if test="record.wechatName != null">
+        wechat_name = #{record.wechatName,jdbcType=VARCHAR},
+      </if>
+          <if test="record.placeOrderTm != null">
+        place_order_tm = #{record.placeOrderTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.expectSTm != null">
+        expect_s_tm = #{record.expectSTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.sTm != null">
+        s_tm = #{record.sTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.overTm != null">
+        over_tm = #{record.overTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.tmFlag != null">
+        tm_flag = #{record.tmFlag,jdbcType=INTEGER},
+      </if>
+          <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+          <if test="record.cTm != null">
+        c_tm = #{record.cTm,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.uTm != null">
+        u_tm = #{record.uTm,jdbcType=TIMESTAMP},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update t_order
+    set
+            	     	 id = #{record.id,jdbcType=BIGINT},
+    	         	     	 amount = #{record.amount,jdbcType=DECIMAL},
+    	         	     	 wechat_id = #{record.wechatId,jdbcType=VARCHAR},
+    	         	     	 order_no = #{record.orderNo,jdbcType=VARCHAR},
+    	         	     	 wechat_order_no = #{record.wechatOrderNo,jdbcType=VARCHAR},
+    	         	     	 o_status = #{record.oStatus,jdbcType=INTEGER},
+    	         	     	 wechat_name = #{record.wechatName,jdbcType=VARCHAR},
+    	         	     	 place_order_tm = #{record.placeOrderTm,jdbcType=TIMESTAMP},
+    	         	     	 expect_s_tm = #{record.expectSTm,jdbcType=TIMESTAMP},
+    	         	     	 s_tm = #{record.sTm,jdbcType=TIMESTAMP},
+    	         	     	 over_tm = #{record.overTm,jdbcType=TIMESTAMP},
+    	         	     	 tm_flag = #{record.tmFlag,jdbcType=INTEGER},
+    	         	     	 remarks = #{record.remarks,jdbcType=VARCHAR},
+    	         	     	 c_tm = #{record.cTm,jdbcType=TIMESTAMP},
+    	         	     	 u_tm = #{record.uTm,jdbcType=TIMESTAMP}
+    	         <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.test.model.auto.Order">
+    update t_order
+    <set>
+                          <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+                      <if test="wechatId != null">
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
+      </if>
+                      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+                      <if test="wechatOrderNo != null">
+        wechat_order_no = #{wechatOrderNo,jdbcType=VARCHAR},
+      </if>
+                      <if test="oStatus != null">
+        o_status = #{oStatus,jdbcType=INTEGER},
+      </if>
+                      <if test="wechatName != null">
+        wechat_name = #{wechatName,jdbcType=VARCHAR},
+      </if>
+                      <if test="placeOrderTm != null">
+        place_order_tm = #{placeOrderTm,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="expectSTm != null">
+        expect_s_tm = #{expectSTm,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="sTm != null">
+        s_tm = #{sTm,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="overTm != null">
+        over_tm = #{overTm,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="tmFlag != null">
+        tm_flag = #{tmFlag,jdbcType=INTEGER},
+      </if>
+                      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+                      <if test="cTm != null">
+        c_tm = #{cTm,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="uTm != null">
+        u_tm = #{uTm,jdbcType=TIMESTAMP},
+      </if>
+              </set>
+    where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                                          
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.fc.test.model.auto.Order">
+    update t_order
+    set 
+             	        	    	 			amount = #{amount,jdbcType=DECIMAL},
+		     	        	    	 			wechat_id = #{wechatId,jdbcType=VARCHAR},
+		     	        	    	 			order_no = #{orderNo,jdbcType=VARCHAR},
+		     	        	    	 			wechat_order_no = #{wechatOrderNo,jdbcType=VARCHAR},
+		     	        	    	 			o_status = #{oStatus,jdbcType=INTEGER},
+		     	        	    	 			wechat_name = #{wechatName,jdbcType=VARCHAR},
+		     	        	    	 			place_order_tm = #{placeOrderTm,jdbcType=TIMESTAMP},
+		     	        	    	 			expect_s_tm = #{expectSTm,jdbcType=TIMESTAMP},
+		     	        	    	 			s_tm = #{sTm,jdbcType=TIMESTAMP},
+		     	        	    	 			over_tm = #{overTm,jdbcType=TIMESTAMP},
+		     	        	    	 			tm_flag = #{tmFlag,jdbcType=INTEGER},
+		     	        	    	 			remarks = #{remarks,jdbcType=VARCHAR},
+		     	        	    	 			c_tm = #{cTm,jdbcType=TIMESTAMP},
+		     	        	    	 			u_tm = #{uTm,jdbcType=TIMESTAMP}
+		     	        where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                                            
+  </update>
+  
+                                                                               
+</mapper>

@@ -1,0 +1,293 @@
+.homeNav {
+    background: url(../static/img/nav-bg.gif) !important;
+}
+
+*:not(option){
+    color: #00d2ff;
+}
+
+.homeNav .sydh01 {
+    width: 100% !important;
+}
+.homeNav li {
+    width: 115px !important;
+    background: url(../static/img/nav-bg.gif) !important;
+}
+.homeNav li.dq {
+    background: url(../static/img/nav-on.png) no-repeat !important;
+    background-size: 100% 98% !important;
+}
+.homeNav li.hk a{
+    color:#00fffc !important;
+}
+.n_c_01 {
+    background: url(../static/img/top-bg.gif) !important;
+    width: 100%;
+}
+.n_c_011 {
+    height: 20px;
+}
+.n_c_011_l {
+    display:none;
+}
+.n_c_011_r ul li a{
+    color:#fff;
+    line-height: 20px;
+}
+.logoimg{
+    height: 200px;
+    background: url(../static/img/backtitle.png) no-repeat;
+    background-position: bottom;
+    background-color: #000;
+    color: #fffd9c;
+    font-size: 64px;
+    line-height: 200px;
+    text-align: left;
+    padding-left: 25%;
+}
+.footer p:not(.cp){
+    display: none !important;
+}
+.footer p.cp{
+    display: block;
+}
+.footer2{
+    height: 98px !important;
+    background: #1b0b37 !important;
+}
+/* .gongGao{
+    background: url(../static/img/main-bg.jpg) no-repeat;
+    background-color: #000;
+    background-position: top;
+} */
+.content{
+	background: url(../static/img/main-bg.jpg) no-repeat;
+    background-color: #000;
+    background-position: top;
+    width: 100%;
+    min-height: 2000px;
+    min-width: 1400px;
+}
+.seizeas{
+    background: #000 !important;
+}
+.gongGao .kjGg h2{
+    /* background: #1b0b37 !important; */
+    color: #00fffc !important;
+    border: #481799 solid 1px;
+    height: 36px;
+    background: url(../static/img/youlian-bg.png) no-repeat;
+    background-size: 100%;
+    line-height: 36px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.gongGao .kjGg .title{
+    color: #00fffc !important;
+    border: #481799 solid 1px;
+    height: 36px;
+    background: url(../static/img/youlian-bg.png) no-repeat;
+    background-size: 100%;
+}
+.gongGao .kjGg .title labal{
+    line-height: 36px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.gongGao .kjGg .kjgg0{
+    background: #1b0b37 !important;
+    color: #fff !important;
+    border: #481799 solid 1px;
+}
+
+table td,table th{
+    background: #1b0b37 !important;
+    color: #fff !important;
+    /*border: #eee !important;*/
+}
+
+.caizhonglist_first li {
+    color:#fff !important;
+}
+
+#mainEcharts{
+    background: #fff !important;
+}
+
+.containerHome {
+    background: #000 !important;
+}
+.homeNav .sydh01 {
+    background: url(../static/img/nav-bg.gif) !important;
+}
+.movie {
+    background: #000 !important;
+}
+
+.layui-laypage a, .layui-laypage span, .layui-laypage select,.layui-laypage button, .layui-laypage input {
+    background-color: initial !important;
+    color: #aeaeae !important;
+    border-color: #aeaeae !important;
+    margin-bottom: 0 !important;
+}
+.layui-laypage .layui-laypage-count, .layui-laypage .layui-laypage-limits, .layui-laypage .layui-laypage-refresh, .layui-laypage .layui-laypage-skip{
+	margin-left: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background-color: #5f5f5f !important;
+}
+
+.myforminput{
+	color: #000;
+    padding: 0 5px;
+    background: #fff;
+    border: 0;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 3px;
+    margin: 3px 3px;
+    width: 65px;
+}
+
+.layui-layer-title{
+	color: #fff !important;
+    border: #481799 solid 1px;
+    background: url(../static/img/youlian-bg.png) no-repeat;
+    height: 36px;
+    background-size: 350%;
+    line-height: 36px;
+    font-size: 20px !important;
+    font-weight: 600;
+}
+
+.layui-layer-btn-center{
+	height: 27px;
+    position: relative;
+    left: 35px;
+    margin-top: 4px;
+    line-height: 27px;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 20px;
+    background: inherit;
+    border-radius: 3px;
+    border: 0;
+}
+
+.layui-table-btn-center{
+    margin-top: 4px;
+    color: #fff;
+    padding: 0 10px;
+    background: inherit;
+    border-radius: 3px;
+    border: 0;
+}
+
+.gongGao{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.index-label-title{
+    width: 700px;
+    height: 16px;
+    line-height: 16px;
+    text-indent: 5px;
+    font-family: "微软雅黑";
+    color: #00fffc;
+    font-size: 16px;
+    font-weight: bold;
+    border-left: #00fffc solid 5px;
+    margin: 18px 0 0 20px;
+}
+.index-label-content{
+    width: 715px;
+    height: 70px;
+    line-height: 25px;
+    color: #00fffc;
+    margin: 10px 0 0 20px;
+    font-size: 12px;
+}
+.index-label-img{
+    width: 720px;
+    height: auto;
+    margin: 10px 0 0 20px;
+}
+.ztz{width:753px; height:20px;position: relative;top: 60px; line-height:20px; color:#00fffc; text-align:center;position: relative;top: 60px;}
+.ztz span{color:#a687ff;}
+.kaijiang{width:490px; height:90px;position: relative;top: 82px;left: 73px;}
+
+.sixadv{
+    position: absolute;
+    top: 45%;
+    right: 50px;
+}
+
+.sixadv a{
+    display: block;
+    width: 136px;
+    height: 71px;
+    background: url(../static/img/tblogos.png) 0 0px no-repeat;
+}
+
+.tongbu{
+    width:753px;
+    height:20px;
+    line-height:20px;
+    color:#00fffc;
+    text-align:center;
+    margin:20px auto 0 auto;
+    position: relative;
+    top: 76px;
+    font-size: 12px;
+}
+.ball_c{
+    font-size: 14px;
+    margin-left: 5px;
+}
+.pic_list{
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 0 10px;
+    height: 34px;
+    line-height: 34px;
+    float: left;
+    text-align: center;
+    min-width: 100px;
+    border: 1px solid #1521b2;
+    cursor: pointer;
+}
+.pic_list .action{
+    border: 1px solid red;
+}
+
+
+.ballbg{
+    line-height: 37px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+.ballbg label{
+    position: relative;
+    left: -5px;
+}
+.rball{
+    background: url(../static/img/redBall.png) no-repeat;
+    background-size: 105%;
+    /*background-color: #fff;*/
+}
+.bball{
+    background: url(../static/img/blueBall.png) no-repeat;
+    background-size: 105%;
+    /*background-color: #fff;*/
+}
+.gball{
+    background: url(../static/img/greenBall.png) no-repeat;
+    background-size: 105%;
+    /*background-color: #fff;*/
+}
