@@ -26,7 +26,7 @@
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
 
         <fileupload.version>1.4</fileupload.version>
-        <commons.io.version>2.6</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
 
         <fastjson.io.version>1.2.62</fastjson.io.version>
         <beanutils.version>1.9.4</beanutils.version>
