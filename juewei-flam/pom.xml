@@ -28,7 +28,7 @@
         <fileupload.version>1.4</fileupload.version>
         <commons.io.version>2.6</commons.io.version>
 
-        <fastjson.io.version>1.2.62</fastjson.io.version>
+        <fastjson.io.version>1.2.83</fastjson.io.version>
         <beanutils.version>1.9.4</beanutils.version>
         <dozer.version>5.5.1</dozer.version>
 
